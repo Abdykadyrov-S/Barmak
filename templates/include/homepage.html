@@ -1,0 +1,49 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>{{ title_page }}</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Place favicon.ico in the root directory -->
+      <link rel="shortcut icon" type="image/x-icon" href="{{settings.logo.url}}">
+
+      <!-- CSS here -->
+      <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/font-awesome-pro.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/flaticon_shofy.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/spacing.css' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+   </head>
+   <body>
+
+    {% block content %}
+
+    {% endblock %}
+
+      <!-- JS here -->
+      <script src="{% static 'assets/js/vendor/jquery.js' %}"></script>
+      <script src="{% static 'assets/js/vendor/waypoints.js' %}"></script>
+      <script src="{% static 'assets/js/bootstrap-bundle.js' %}"></script>
+      <script src="{% static 'assets/js/meanmenu.js' %}"></script>
+      <script src="{% static 'assets/js/swiper-bundle.js' %}"></script>
+      <script src="{% static 'assets/js/slick.js' %}"></script>
+      <script src="{% static 'assets/js/range-slider.js' %}"></script>
+      <script src="{% static 'assets/js/magnific-popup.js' %}"></script>
+      <script src="{% static 'assets/js/nice-select.js' %}"></script>
+      <script src="{% static 'assets/js/purecounter.js' %}"></script>
+      <script src="{% static 'assets/js/countdown.js' %}"></script>
+      <script src="{% static 'assets/js/wow.js' %}"></script>
+      <script src="{% static 'assets/js/isotope-pkgd.js' %}"></script>
+      <script src="{% static 'assets/js/imagesloaded-pkgd.js' %}"></script>
+      <script src="{% static 'assets/js/ajax-form.js' %}"></script>
+      <script src="{% static 'assets/js/main.js' %}"></script>
+   </body>
+</html>
