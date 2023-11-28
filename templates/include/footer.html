@@ -10,11 +10,12 @@
                        <div class="tp-footer-widget footer-col-1 mb-50">
                           <div class="tp-footer-widget-content">
                              <div class="tp-footer-logo">
-                                <a href="index.html">
-                                   <img src="{% static 'assets/img/logo/logo.svg' %}" alt="logo">
+                                <a href="{% url 'index' %}">
+                                   <img src="{{settings.logo.url}}" style="width: 70px;" alt="logo">
+                                   <b style="color: black;">{{settings.title}}</b>
                                 </a>
                              </div>
-                             <p class="tp-footer-desc">We are a team of designers and developers that create high quality WordPress</p>
+                             <p class="tp-footer-desc">Совершенство в каждом клике:<br> ваш идеальный ноутбук и аксессуары ждут здесь!</p>
                              <div class="tp-footer-social">
                                 {% if settings.facebook %}
                                 <a href="{{settings.facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
@@ -31,41 +32,38 @@
                     </div>
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                        <div class="tp-footer-widget footer-col-2 mb-50">
-                          <h4 class="tp-footer-widget-title">My Account</h4>
+                          <h4 class="tp-footer-widget-title">Все страницы</h4>
                           <div class="tp-footer-widget-content">
                              <ul>
-                                <li><a href="index.html#">Track Orders</a></li>
-                                <li><a href="index.html#">Shipping</a></li>
-                                <li><a href="index.html#">Wishlist</a></li>
-                                <li><a href="index.html#">My Account</a></li>
-                                <li><a href="index.html#">Order History</a></li>
-                                <li><a href="index.html#">Returns</a></li>
+                                <li><a href="{% url 'index' %}">Главная</a> </li>
+                                <li> <a href="{% url 'about' %}">О нас</a></li>
+                                <li> <a href="{% url 'news' %}">Новости</a></li>
+                                <li><a href="{% url 'category' %}">Категории</a></li>
+                                <li><a href="{% url 'products' %}">Все продукты</a></li>
+                                <li><a href="{% url 'contact' %}">Контакты</a></li>
                              </ul>
                           </div>
                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                        <div class="tp-footer-widget footer-col-3 mb-50">
-                          <h4 class="tp-footer-widget-title">Infomation</h4>
+                          <h4 class="tp-footer-widget-title">Категории</h4>
                           <div class="tp-footer-widget-content">
                              <ul>
-                                <li><a href="index.html#">Our Story</a></li>
-                                <li><a href="index.html#">Careers</a></li>
-                                <li><a href="index.html#">Privacy Policy</a></li>
-                                <li><a href="index.html#">Terms & Conditions</a></li>
-                                <li><a href="index.html#">Latest News</a></li>
-                                <li><a href="index.html#">Contact Us</a></li>
+                                {% for category in footer_categories %}
+                                <li><a href="{% url 'category_detail' category.slug %}">{{category.title}}</a></li>
+                                {% endfor %}
                              </ul>
                           </div>
                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                        <div class="tp-footer-widget footer-col-4 mb-50">
-                          <h4 class="tp-footer-widget-title">Talk To Us</h4>
+                          <h4 class="tp-footer-widget-title">Свяжитесь с нами</h4>
                           <div class="tp-footer-widget-content">
                              <div class="tp-footer-talk mb-20">
-                                <span>Got Questions? Call us</span>
-                                <h4><a href="tel:670-413-90-762">+670 413 90 762</a></h4>
+                                <span>Если у вас остались вопросы позвоните кликнув</span>
+                                <h5><a href="tel:{{settings.phone}}">{{settings.phone}}</a></h5>
                              </div>
                              <div class="tp-footer-contact">
                                 <div class="tp-footer-contact-item d-flex align-items-start">
@@ -80,7 +78,8 @@
                                       </span>
                                    </div>
                                    <div class="tp-footer-contact-content">
-                                      <p><a href="mailto:shofy@support.com">shofy@support.com</a></p>
+                                    <span>Наша почта всегда ждет сообщения от вас</span>
+                                    <h5><a href="mailto:{{settings.email}}">{{settings.email}}</a></h5>
                                    </div>
                                 </div>
                                 <div class="tp-footer-contact-item d-flex align-items-start">
@@ -93,7 +92,8 @@
                                       </span>
                                    </div>
                                    <div class="tp-footer-contact-content">
-                                      <p><a href="https://www.google.com/maps/place/Sleepy+Hollow+Rd,+Gouverneur,+NY+13642,+USA/@44.3304966,-75.4552367,17z/data=!3m1!4b1!4m6!3m5!1s0x4cccddac8972c5eb:0x56286024afff537a!8m2!3d44.3304928!4d-75.453048!16s%2Fg%2F1tdsjdj4" target="_blank">79 Sleepy Hollow St. <br> Jamaica, New York 1432</a></p>
+                                    <span>Мы в 2 Gis</span>
+                                    <h5><a href="https://go.2gis.com/8v81u" target="_blank">{{settings.location}}</a></h5>
                                    </div>
                                 </div>
                              </div>
@@ -109,14 +109,7 @@
                     <div class="row align-items-center">
                        <div class="col-md-6">
                           <div class="tp-footer-copyright">
-                             <p>© 2023 All Rights Reserved  |  HTML Template by <a href="index.html">Themepure</a>.</p>
-                          </div>
-                       </div>
-                       <div class="col-md-6">
-                          <div class="tp-footer-payment text-md-end">
-                             <p>
-                                <img src="{% static 'assets/img/footer/footer-pay.png' %}" alt="">
-                             </p>
+                             <p> &copy; Copyright 2023 {{settings.title}} | Все Права Защищены | <a href="https://codexstudio.site/" class="primary-hover"> Сделано командой Codex-studio </a></p>
                           </div>
                        </div>
                     </div>

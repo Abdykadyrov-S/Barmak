@@ -32,7 +32,7 @@ class Product(models.Model):
         verbose_name="Название"
     )
     description = models.TextField(
-        verbose_name="Описание",
+        verbose_name="Короткое описание",
         blank=True, null=True
     )
     popular = models.BooleanField(
@@ -46,10 +46,6 @@ class Product(models.Model):
     new = models.BooleanField(
         default=False, 
         verbose_name="Товар новый (Новые поступления)?"
-    )
-    discount = models.BooleanField(
-        default=False, 
-        verbose_name="Товар со скидкой?"
     )
     featured = models.BooleanField(
         default=False, 
@@ -91,6 +87,20 @@ class Product(models.Model):
     created = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Дата создания"
+    )
+    title_2 = models.CharField(
+        max_length=300,
+        verbose_name="заголовок для описания",
+        blank=True, null=True
+    )
+    description_2 = models.TextField(
+        verbose_name="Подробное описание",
+        blank=True, null=True
+    )
+    about_product_image = models.ImageField(
+        max_length=1000,
+        verbose_name="Фотография продукта для описания",
+        default='no_image.jpg'
     )
 
     def __str__(self):

@@ -524,7 +524,7 @@
                                                    </div>
                                                    <p>{{ product.description  | truncatewords:10 }}</p>
                                                    <div class="tp-product-list-add-to-cart">
-                                                      <button class="tp-product-list-add-to-cart-btn">Подробнее</button>
+                                                      <a href="{% url 'product_detail' product.id %}"><button class="tp-product-list-add-to-cart-btn">Подробнее</button></a>
                                                    </div>
                                                 </div>
                                              </div>

@@ -464,16 +464,16 @@
                                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                                        <div class="tp-product-item-2 mb-40">
                                           <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
-                                             <a href="product-details.html">
+                                             <a href="{% url 'product_detail' product.id %}">
                                                 <img src="{{ product.image.url}}" alt="">
                                              </a>
                                           </div>
                                           <div class="tp-product-content-2 pt-15">
                                              <div class="tp-product-tag-2">
-                                                <a href="shop-no-sidebar.html#">{{ product.title }}</a>
+                                                <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
                                              </div>
                                              <h3 class="tp-product-title-2">
-                                                <a href="product-details.html">{{ product.description  | truncatewords:10 }}</a>
+                                                <a href="{% url 'product_detail' product.id %}">{{ product.description  | truncatewords:10 }}</a>
                                              </h3>
                                              <div class="tp-product-rating-icon tp-product-rating-icon-2">
                                                 <span><i class="fa-solid fa-star"></i></span>
@@ -483,8 +483,8 @@
                                                 <span><i class="fa-solid fa-star"></i></span>
                                              </div>
                                              <div class="tp-product-price-wrapper-2">
-                                                <span class="tp-product-price-2 new-price">$340.00</span>
-                                                <span class="tp-product-price-2 old-price">$475.00</span>
+                                                <span class="tp-product-price-2 old-price">{{product.old_price}}</span>
+                                                <span class="tp-product-price-2 new-price">{{product.price}} сом</span>
                                              </div>
                                           </div>
                                        </div>
@@ -499,19 +499,15 @@
                                           {% for product in products %}
                                           <div class="tp-product-list-item d-md-flex">
                                              <div class="tp-product-list-thumb p-relative fix">
-                                                <a href="shop-no-sidebar.html#">
+                                                <a href="{% url 'product_detail' product.id %}">
                                                    <img src="{{ product.image.url}}" style="width: 300px; height: 250px;" alt="">
                                                 </a>
                
                                              </div>
                                              <div class="tp-product-list-content">
                                                 <div class="tp-product-content-2 pt-15">
-                                                   <div class="tp-product-tag-2">
-                                                      <a href="shop-no-sidebar.html#">Shirt, </a>
-                                                      <a href="shop-no-sidebar.html#">Branded</a>
-                                                   </div>
                                                    <h3 class="tp-product-title-2">
-                                                      <a href="product-details.html">Simple Modern School Boys</a>
+                                                      <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
                                                    </h3>
                                                    <div class="tp-product-rating-icon tp-product-rating-icon-2">
                                                       <span><i class="fa-solid fa-star"></i></span>
@@ -521,12 +517,12 @@
                                                       <span><i class="fa-solid fa-star"></i></span>
                                                    </div>
                                                    <div class="tp-product-price-wrapper-2">
-                                                      <span class="tp-product-price-2 new-price">$82.00</span>
-                                                      <span class="tp-product-price-2 old-price">$99.00</span>
+                                                      <span class="tp-product-price-2 old-price">{{product.old_price}}</span>
+                                                      <span class="tp-product-price-2 new-price">{{product.price}} сом</span>
                                                    </div>
-                                                   <p>Auctor urna nunc id cursus. Scelerisque purus semper eget duis at pharetra vel turpis nunc eget.</p>
+                                                   <p>{{ product.description  | truncatewords:10 }}</p>
                                                    <div class="tp-product-list-add-to-cart">
-                                                      <button class="tp-product-list-add-to-cart-btn">Add To Cart</button>
+                                                      <button class="tp-product-list-add-to-cart-btn"><a href="{% url 'product_detail' product.id %}">Подробнее</a></button>
                                                    </div>
                                                 </div>
                                              </div>

@@ -12,10 +12,10 @@
                <div class="row">
                   <div class="col-xxl-12">
                      <div class="breadcrumb__content p-relative z-index-1">
-                        <h3 class="breadcrumb__title">Register Now</h3>
+                        <h3 class="breadcrumb__title">Зарегистрироваться</h3>
                         <div class="breadcrumb__list">
-                           <span><a href="register.html#">Home</a></span>
-                           <span>Register</span>
+                           <span><a href="{% url 'index' %}">Главная страница</a></span>
+                           <span>Зарегистрироваться</span>
                         </div>
                      </div>
                   </div>
@@ -37,15 +37,15 @@
                   <div class="col-xl-6 col-lg-8">
                      <div class="tp-login-wrapper">
                         <div class="tp-login-top text-center mb-30">
-                           <h3 class="tp-login-title">Sign Up Shofy.</h3>
-                           <p>Already have an account?  <span><a href="login.html">Sign In</a></span></p>
+                           <h3 class="tp-login-title">Создать аккаунт</h3>
+                           <p>У вас уже есть аккаунт?  <span><a href="{% url 'login' %}"> Войти</a></span></p>
                         </div>
                         <div class="tp-login-option">
                            <div class="tp-login-social mb-10 d-flex flex-wrap align-items-center justify-content-center">
                               <div class="tp-login-option-item has-google">
                                  <a href="register.html#">
                                     <img src="{% static 'assets/img/icon/login/google.svg' %}" alt="">
-                                    Sign up with google
+                                    Продолжить с Google
                                  </a>
                               </div>
                               <div class="tp-login-option-item">
@@ -60,23 +60,25 @@
                               </div>
                            </div>
                            <div class="tp-login-mail text-center mb-40">
-                              <p>or Sign up with <a href="register.html#">Email</a></p>
+                              <p>Создайте аккаунт по электронной почте</a></p>
                            </div>
+                           <form method="post">
+                              {% csrf_token %}
                            <div class="tp-login-input-wrapper">
                               <div class="tp-login-input-box">
                                  <div class="tp-login-input">
-                                    <input id="name" type="text" placeholder="Shahnewaz Sakil">
+                                    <input name="username" id="name" type="text" placeholder="Абдыкадыров Сыймык">
                                  </div>
                                  <div class="tp-login-input-title">
-                                    <label for="name">Your Name</label>
+                                    <label for="name">ФИО</label>
                                  </div>
                               </div>
                               <div class="tp-login-input-box">
                                  <div class="tp-login-input">
-                                    <input id="email" type="email" placeholder="shofy@mail.com">
+                                    <input name="email" id="email" type="email" placeholder="barmak@gmail.com">
                                  </div>
                                  <div class="tp-login-input-title">
-                                    <label for="email">Your Email</label>
+                                    <label for="email">Email</label>
                                  </div>
                               </div>
                               <div class="tp-login-input-box">
@@ -102,19 +104,19 @@
                                     </span>
                                  </div>
                                  <div class="tp-login-input-title">
-                                    <label for="tp_password">Password</label>
+                                    <label for="tp_password">Пароль</label>
                                  </div>
                               </div>
                            </div>
                            <div class="tp-login-suggetions d-sm-flex align-items-center justify-content-between mb-20">
                               <div class="tp-login-remeber">
                                  <input id="remeber" type="checkbox">
-                                 <label for="remeber">I accept the terms of the Service & <a href="register.html#">Privacy Policy</a>.</label>
                               </div>
                            </div>
                            <div class="tp-login-bottom">
-                              <a href="register.html#" class="tp-login-btn w-100">Sign Up</a>
+                              <button class="tp-login-btn w-100" type="submit">Зарегистрироваться</button>
                            </div>
+                           </form>
                         </div>
                      </div>
                   </div>

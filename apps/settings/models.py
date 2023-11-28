@@ -11,13 +11,6 @@ class Settings(models.Model):
         verbose_name="Логотип",
         blank = True, null = True
     )
-    image_banner = ResizedImageField(
-        force_format = "WEBP",
-        quality = "100",
-        upload_to = "banner_image",
-        verbose_name="Фотография баннера",
-        blank = True,null = True    
-    )
     title = models.CharField(
         max_length=255,
         verbose_name="Заголовок для фотографии"

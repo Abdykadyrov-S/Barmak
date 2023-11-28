@@ -5,10 +5,12 @@ from django.contrib.auth import logout
 
 from apps.settings.models import Settings
 from apps.users.models import User
+from apps.products.models import Category
 
 # Create your views here.
 def register(request):
     settings = Settings.objects.latest('id')
+    footer_categories = Category.objects.all().order_by('?')
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -36,6 +38,7 @@ def register(request):
     return render(request, 'users/register.html', context)
 
 def user_login(request):
+    footer_categories = Category.objects.all().order_by('?')
     settings = Settings.objects.latest('id')
     if request.method == "POST":
         username = request.POST.get('username')
@@ -52,12 +55,12 @@ def user_login(request):
     }
     return render(request, 'users/login.html', context)
 
-# def profile(request, username):
-#     user = User.objects.get(username = username)
-#     setting = Settings.objects.latest('id')
-#     return render(request, 'users/detail.html', locals())
+def profile(request, username):
+    user = User.objects.get(username = username)
+    settings = Settings.objects.latest('id')
+    return render(request, 'users/profile.html', locals())
 
 
 def logout_view(request):
     logout(request)
-    return redirect('index')
+    return redirect('login')
