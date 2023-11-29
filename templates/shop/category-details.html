@@ -178,7 +178,9 @@
                                                 <span><i class="fa-solid fa-star"></i></span>
                                              </div>
                                              <div class="tp-product-price-wrapper-2">
-                                                <span class="tp-product-price-2 old-price">{{product.old_price}}</span>
+                                                {% if product.old_price %}
+                                                <span class="tp-product-price old-price">{{product.old_price}}</span>
+                                                {% endif %} <span class="tp-product-price-2 old-price">{{product.old_price}}</span>
                                                 <span class="tp-product-price-2 new-price">{{product.price}} сом</span>
                                              </div>
                                           </div>
@@ -212,7 +214,9 @@
                                                       <span><i class="fa-solid fa-star"></i></span>
                                                    </div>
                                                    <div class="tp-product-price-wrapper-2">
-                                                      <span class="tp-product-price-2 old-price">{{product.old_price}}</span>
+                                                      {% if product.old_price %}
+                                                      <span class="tp-product-price old-price">{{product.old_price}}</span>
+                                                      {% endif %}
                                                       <span class="tp-product-price-2 new-price">{{product.price}} сом</span>
                                                    </div>
                                                    <p>{{ product.description  | truncatewords:10 }}</p>

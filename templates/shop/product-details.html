@@ -98,7 +98,9 @@
    
                            <!-- price -->
                            <div class="tp-product-details-price-wrapper mb-20">
+                              {% if product.old_price %}
                               <span class="tp-product-details-price old-price">{{product.old_price}}</span>
+                              {% endif %}
                               <span class="tp-product-details-price new-price">{{product.price}} сом</span>
                            </div>
    
@@ -174,7 +176,9 @@
                                                 <div class="col-lg-6">
                                                    <div class="tp-product-details-desc-content pt-25">
                                                       <span>{{product.title}}</span>
+                                                      {% if product.title_2 %}
                                                       <h3 class="tp-product-details-desc-title">{{product.title_2}}</h3>
+                                                      {% endif %}
                                                       <p>{{product.description_2}}</p>
                                                    </div>
                                                 </div>

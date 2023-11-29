@@ -14,7 +14,8 @@ def news(request):
 def news_detail(request,id):
     settings = Settings.objects.latest('id')
     about = About.objects.latest('id')
-    news_others = News.objects.all().order_by('?')[:3]
+    news_others = News.objects.all().order_by('?')[:1]
+    latest_new = News.objects.latest('id')
     news = News.objects.get(id=id)
     footer_categories = Category.objects.all().order_by('?')
     return render(request, "blog/blog-details.html",locals())

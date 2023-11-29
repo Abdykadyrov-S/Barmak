@@ -91,17 +91,19 @@
                                     </span>
                                  </div>
                                  <div class="tp-postbox-details-navigation-content">
-                                    <span>Previous Post</span>
+                                    {% for new in news_others %}
+                                    <span>Вам так же может понравиться</span>
                                     <h3 class="tp-postbox-details-navigation-title">
-                                       <a href="blog-details.html">Hiring the Right Sales Team at <br> the Right Time</a>
+                                       <a href="{% url 'news_detail' new.id %}">{{new.title}}</a>
                                     </h3>
+                                    {% endfor %}
                                  </div>
                               </div>
                               <div class="tp-postbox-details-navigation-item d-flex align-items-center text-end">
                                  <div class="tp-postbox-details-navigation-content">
-                                    <span>Next Post</span>
+                                    <span>Последняя новость</span>
                                     <h3 class="tp-postbox-details-navigation-title">
-                                       <a href="blog-details.html">Fully embrace the return of <br> 90s fashion</a>
+                                       <a href="{% url 'news_detail' latest_new.id %}">{{latest_new.title}}</a>
                                     </h3>
                                  </div>
                                  <div class="tp-postbox-details-navigation-icon ml-15">
@@ -122,183 +124,7 @@
                   </div>
                </div>
             </div>
-            <div class="tp-postbox-related-area pt-115 pb-90 mb-110" data-bg-color="#F4F7F9">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-xl-12">
-                        <div class="tp-postbox-related">
-                           <div class="row">
-                              {% for new in news_others %}
-                              <div class="col-lg-4 col-md-6">
-                                 <div class="tp-blog-grid-item tp-blog-grid-style2 p-relative mb-30">
-                                    <div class="tp-blog-grid-thumb w-img fix mb-30">
-                                       <a href="{% url 'news_detail' new.id %}">
-                                          <img src="{{new.image.url}}" alt="">
-                                       </a>
-                                    </div>
-                                    <div class="tp-blog-grid-content">
-                                       <div class="tp-blog-grid-meta">
-                                          <span>
-                                             <span>
-                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M15 8.5C15 12.364 11.864 15.5 8 15.5C4.136 15.5 1 12.364 1 8.5C1 4.636 4.136 1.5 8 1.5C11.864 1.5 15 4.636 15 8.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                   <path d="M10.5972 10.7259L8.42715 9.43093C8.04915 9.20693 7.74115 8.66793 7.74115 8.22693V5.35693" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                             </span>
-                                             {{new.create}}
-                                          </span>
-                                          <span>
-                                             <span>
-                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M12.5289 11.881L12.8019 14.093C12.8719 14.674 12.2489 15.08 11.7519 14.779L8.81888 13.036C8.49688 13.036 8.18189 13.015 7.87389 12.973C8.39189 12.364 8.69988 11.594 8.69988 10.761C8.69988 8.77299 6.97788 7.16302 4.84988 7.16302C4.03788 7.16302 3.28888 7.394 2.66588 7.8C2.64488 7.625 2.63788 7.44999 2.63788 7.26799C2.63788 4.08299 5.40288 1.5 8.81888 1.5C12.2349 1.5 14.9999 4.08299 14.9999 7.26799C14.9999 9.15799 14.0269 10.831 12.5289 11.881Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                   <path d="M8.7 10.7611C8.7 11.5941 8.39201 12.3641 7.87401 12.9731C7.18101 13.8131 6.082 14.3521 4.85 14.3521L3.023 15.437C2.715 15.626 2.323 15.3671 2.365 15.0101L2.54 13.6311C1.602 12.9801 1 11.9371 1 10.7611C1 9.52905 1.658 8.44407 2.666 7.80007C3.289 7.39407 4.038 7.16309 4.85 7.16309C6.978 7.16309 8.7 8.77305 8.7 10.7611Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                             </span>
-                                             Comments (0)
-                                          </span>
-                                       </div>
-                                       <h3 class="tp-blog-grid-title">
-                                          <a href="{% url 'news_detail' new.id %}">{{new.title}}</a>
-                                       </h3>
-                                       <p>{{new.descriptions|truncatewords:15}}</p>
-      
-                                       <div class="tp-blog-grid-btn">
-                                          <a href="{% url 'news_detail' new.id %}" class="tp-link-btn-3">
-                                             Подробнее
-                                             <span>
-                                                <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                   <path d="M16 7.5L1 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                   <path d="M9.9502 1.47541L16.0002 7.49941L9.9502 13.5244" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                             </span>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              {% endfor %}
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="container">
-               <div class="row justify-content-center">
-                  <div class="col-lg-8">
-                     <div class="tp-postbox-details-comment-wrapper">
-                        <h3 class="tp-postbox-details-comment-title">Comments (2)</h3>
-   
-                        <div class="tp-postbox-details-comment-inner">
-                           <ul>
-                              <li>
-                                 <div class="tp-postbox-details-comment-box d-sm-flex align-items-start">
-                                    <div class="tp-postbox-details-comment-thumb">
-                                       <img src="{% static 'assets/img/users/user-2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="tp-postbox-details-comment-content">
-                                       <div class="tp-postbox-details-comment-top d-flex justify-content-between align-items-start">
-                                          <div class="tp-postbox-details-comment-avater">
-                                             <h4 class="tp-postbox-details-comment-avater-title">Lance Bogrol</h4>
-                                             <span class="tp-postbox-details-avater-meta">12 April, 2023 at 3.50pm</span>
-                                          </div>
-                                          <div class="tp-postbox-details-comment-reply">
-                                             <a href="blog-details-2.html#">Reply</a>
-                                          </div>
-                                       </div>
-                                       <p>By defining and following internal and external processes, your team will have clarity on resources to <br> attract and retain customers for your business.</p>
-                                    </div>
-                                 </div>
-                                 <ul class="children">
-                                    <li>
-                                       <div class="tp-postbox-details-comment-box d-sm-flex align-items-start">
-                                          <div class="tp-postbox-details-comment-thumb">
-                                             <img src="{% static 'assets/img/users/user-3.jpg' %}" alt="">
-                                          </div>
-                                          <div class="tp-postbox-details-comment-content">
-                                             <div class="tp-postbox-details-comment-top d-flex justify-content-between align-items-start">
-                                                <div class="tp-postbox-details-comment-avater">
-                                                   <h4 class="tp-postbox-details-comment-avater-title">Dasy Lily</h4>
-                                                   <span class="tp-postbox-details-avater-meta">12 April, 2023 at 3.50pm</span>
-                                                </div>
-                                                <div class="tp-postbox-details-comment-reply">
-                                                   <a href="blog-details-2.html#">Reply</a>
-                                                </div>
-                                             </div>
-                                             <p>By defining and following internal and external processes, your team will have clarity on resources to <br> attract and retain customers for your business.</p>
-                                          </div>
-                                       </div>
-                                    </li>
-                                 </ul>
-                              </li>
-                              <li>
-                                 <div class="tp-postbox-details-comment-box d-sm-flex align-items-start">
-                                    <div class="tp-postbox-details-comment-thumb">
-                                       <img src="{% static 'assets/img/users/user-4.jpg' %}" alt="">
-                                    </div>
-                                    <div class="tp-postbox-details-comment-content">
-                                       <div class="tp-postbox-details-comment-top d-flex justify-content-between align-items-start">
-                                          <div class="tp-postbox-details-comment-avater">
-                                             <h4 class="tp-postbox-details-comment-avater-title">Shahnewaz Sakil</h4>
-                                             <span class="tp-postbox-details-avater-meta">12 April, 2023 at 3.50pm</span>
-                                          </div>
-                                          <div class="tp-postbox-details-comment-reply">
-                                             <a href="blog-details-2.html#">Reply</a>
-                                          </div>
-                                       </div>
-                                       <p>By defining and following internal and external processes, your team will have clarity on resources to <br> attract and retain customers for your business.</p>
-                                    </div>
-                                 </div>
-                              </li>
-                           </ul>
-                        </div>
-                     </div>
-   
-                     <div class="tp-postbox-details-form">
-                        <h3 class="tp-postbox-details-form-title">Leave a Reply</h3>
-                        <p>Your email address will not be published. Required fields are marked *</p>
-   
-                        <div class="tp-postbox-details-form-wrapper">
-                           <div class="tp-postbox-details-form-inner">
-                              <div class="tp-postbox-details-input-box">
-                                 <div class="tp-contact-input">
-                                    <input name="name" id="name" type="text" placeholder="Shahnewaz Sakil">
-                                 </div>
-                                 <div class="tp-postbox-details-input-title">
-                                    <label for="name">Your Name</label>
-                                 </div>
-                              </div>
-                              <div class="tp-postbox-details-input-box">
-                                 <div class="tp-contact-input">
-                                    <input name="email" id="email" type="email" placeholder="shofy@mail.com">
-                                 </div>
-                                 <div class="tp-postbox-details-input-title">
-                                    <label for="email">Your Email</label>
-                                 </div>
-                              </div>
-                              <div class="tp-postbox-details-input-box">
-                                 <div class="tp-contact-input">
-                                    <textarea id="msg" placeholder="Write your message here..."></textarea>
-                                 </div>
-                                 <div class="tp-postbox-details-input-title">
-                                    <label for="msg">Your Message</label>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="tp-postbox-details-suggetions mb-20">
-                              <div class="tp-postbox-details-remeber">
-                                 <input id="remeber" type="checkbox">
-                                 <label for="remeber">Save my name, email, and website in this browser for the next time I comment.</label>
-                              </div>
-                           </div>
-                           <div class="tp-postbox-details-input-box">
-                              <button class="tp-postbox-details-input-btn" type="submit">Post Comment</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+
          </section>
          <!-- blog details area end -->
 

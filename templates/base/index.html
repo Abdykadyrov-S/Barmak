@@ -317,7 +317,9 @@
                                              </div>
                                           </div>
                                           <div class="tp-product-price-wrapper">
+                                             {% if product.old_price %}
                                              <span class="tp-product-price old-price">{{product.old_price}}</span>
+                                             {% endif %}
                                              <span class="tp-product-price new-price">{{product.price}} сом</span>
                                           </div>
                                        </div>
@@ -417,7 +419,9 @@
                                        </div>
                                     </div>
                                     <div class="tp-product-price-wrapper">
+                                       {% if product.old_price %}
                                        <span class="tp-product-price old-price">{{product.old_price}}</span>
+                                       {% endif %}
                                        <span class="tp-product-price new-price">{{product.price}} сом</span>
                                     </div>
    
@@ -513,7 +517,9 @@
                                        </div>
                                     </div>
                                     <div class="tp-product-price-wrapper">
+                                       {% if product.old_price %}
                                        <span class="tp-product-price old-price">{{product.old_price}}</span>
+                                       {% endif %}
                                        <span class="tp-product-price new-price">{{product.price}} сом</span>
                                     </div>
                                  </div>

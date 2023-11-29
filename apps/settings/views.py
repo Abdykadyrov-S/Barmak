@@ -25,6 +25,7 @@ def about(request):
     about = About.objects.latest('id')
     best_products = Product.objects.all().order_by('?')
     footer_categories = Category.objects.all().order_by('?')
+    data = Data.objects.latest('id')
     return render(request, "base/about.html",locals())
 
 def contact(request):

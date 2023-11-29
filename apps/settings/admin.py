@@ -4,4 +4,5 @@ from .models import *
 # Register your models here.
 admin.site.register(Settings)
 admin.site.register(About)
+admin.site.register(Data)
 admin.site.register(Contact)
