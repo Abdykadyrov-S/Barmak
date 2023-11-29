@@ -59,21 +59,14 @@
               </div>
               <!-- categories -->
               <div class="tp-shop-widget mb-50">
-                 <h3 class="tp-shop-widget-title">Categories</h3>
+                 <h3 class="tp-shop-widget-title">Категории</h3>
 
                  <div class="tp-shop-widget-content">
                     <div class="tp-shop-widget-categories">
                        <ul>
-                          <li><a href="shop-no-sidebar.html#">Leather <span>10</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Classic Watch <span>18</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Leather Man Wacth <span>22</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Trending Watch <span>17</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Google <span>22</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Woman Wacth <span>14</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Tables <span>19</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Electronics <span>29</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Phones <span>05</span></a></li>
-                          <li><a href="shop-no-sidebar.html#">Grocery <span>14</span></a></li>
+                        {% for category in footer_categories %}
+                        <li><a href="{% url 'category_detail' category.slug %}">{{category.title}}</a></li>
+                        {% endfor %}
                        </ul>
                     </div>
                  </div>
@@ -312,7 +305,7 @@
                                  <span><i class="fa-solid fa-star"></i></span>
                               </div>
                               <div class="tp-product-details-reviews">
-                                 <span>(36 Reviews)</span>
+                                 <span>{{product.review_product.all.count}} отзыва</span>
                               </div>
                            </div>
                         </div>
