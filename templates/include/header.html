@@ -1,87 +1,91 @@
 {% load static %}
-      <!-- pre loader area start -->
-      <div id="loading">
-        <div id="loading-center">
-           <div id="loading-center-absolute">
-              <!-- loading content here -->
-              <div class="tp-preloader-content">
-                 <div class="tp-preloader-logo">
-                    <div class="tp-preloader-circle">
-                       <svg width="190" height="190" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle stroke="#D9D9D9" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
-                          <circle stroke="red" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
-                      </svg>
-                    </div>
-                    <img src="{{settings.logo.url}}" style="width: 150px; height: 150px; border-radius: 50%;" alt="">
-                 </div>
-                 <h3 class="tp-preloader-title">Barmak</h3>
-                 <p class="tp-preloader-subtitle">Загрузка</p>
-              </div>
-           </div>
-        </div>  
-     </div>
-     <!-- pre loader area end -->
+<!-- pre loader area start -->
+<div id="loading">
+   <div id="loading-center">
+      <div id="loading-center-absolute">
+         <!-- loading content here -->
+         <div class="tp-preloader-content">
+            <div class="tp-preloader-logo">
+               <div class="tp-preloader-circle">
+                  <svg width="190" height="190" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <circle stroke="#D9D9D9" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round">
+                     </circle>
+                     <circle stroke="red" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle>
+                  </svg>
+               </div>
+               <img src="{{settings.logo.url}}" style="width: 150px; height: 150px; border-radius: 50%;" alt="">
+            </div>
+            <h3 class="tp-preloader-title">Barmak</h3>
+            <p class="tp-preloader-subtitle">Загрузка</p>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- pre loader area end -->
 
-     <!-- back to top start -->
-     <div class="back-to-top-wrapper">
-        <button id="back_to_top" type="button" class="back-to-top-btn">
-           <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-           </svg>               
-        </button>
-     </div>
-     <!-- back to top end -->
+<!-- back to top start -->
+<div class="back-to-top-wrapper">
+   <button id="back_to_top" type="button" class="back-to-top-btn">
+      <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+      </svg>
+   </button>
+</div>
+<!-- back to top end -->
 
-     <!-- offcanvas area start -->
-     <div class="offcanvas__area">
-        <div class="offcanvas__wrapper">
-           <div class="offcanvas__close">
-              <button class="offcanvas__close-btn offcanvas-close-btn">
-                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M1 1L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-           </div>
-           <div class="offcanvas__content">
-              <div class="offcanvas__top mb-70 d-flex justify-content-between align-items-center">
-                 <div class="offcanvas__logo logo">
-                    <a href="{% url 'index' %}">
-                       <img src="{{settings.logo.url}}" style="width: 20%;" alt="logo">
-                    </a>
-                 </div>
-              </div>
-              <div class="offcanvas__category pb-40">
-                 <button class="tp-offcanvas-category-toggle">
-                    <i class="fa-solid fa-bars"></i>
-                    Все категории
-                 </button>
-                 <div class="tp-category-mobile-menu">
-                    
-                 </div>
-              </div>
-              <div class="tp-main-menu-mobile fix mb-40"></div>
+<!-- offcanvas area start -->
+<div class="offcanvas__area">
+   <div class="offcanvas__wrapper">
+      <div class="offcanvas__close">
+         <button class="offcanvas__close-btn offcanvas-close-btn">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+               <path d="M1 1L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+            </svg>
+         </button>
+      </div>
+      <div class="offcanvas__content">
+         <div class="offcanvas__top mb-70 d-flex justify-content-between align-items-center">
+            <div class="offcanvas__logo logo">
+               <a href="{% url 'index' %}">
+                  <img src="{{settings.logo.url}}" style="width: 20%;" alt="logo">
+               </a>
+            </div>
+         </div>
+         <div class="offcanvas__category pb-40">
+            <button class="tp-offcanvas-category-toggle">
+               <i class="fa-solid fa-bars"></i>
+               Все категории
+            </button>
+            <div class="tp-category-mobile-menu">
 
-              <div class="offcanvas__contact align-items-center d-none">
-                 <div class="offcanvas__contact-icon mr-20">
-                    <span>
-                       <img src="{% static 'assets/img/icon/contact.png' %}" alt="">
-                    </span>
-                 </div>
-                 <div class="offcanvas__contact-content">
-                    <h3 class="offcanvas__contact-title">
-                       <a href="tel:098-852-987">004524865</a>
-                    </h3>
-                 </div>
-              </div>
-           </div>
-        </div>
-     </div>
-     <div class="body-overlay"></div>
-     <!-- offcanvas area end -->
+            </div>
+         </div>
+         <div class="tp-main-menu-mobile fix mb-40"></div>
 
-     <!-- cart mini area start -->
-     <div class="cartmini__area">
+         <div class="offcanvas__contact align-items-center d-none">
+            <div class="offcanvas__contact-icon mr-20">
+               <span>
+                  <img src="{% static 'assets/img/icon/contact.png' %}" alt="">
+               </span>
+            </div>
+            <div class="offcanvas__contact-content">
+               <h3 class="offcanvas__contact-title">
+                  <a href="tel:098-852-987">004524865</a>
+               </h3>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="body-overlay"></div>
+<!-- offcanvas area end -->
+
+<!-- cart mini area start -->
+<!-- <div class="cartmini__area">
         <div class="cartmini__wrapper d-flex justify-content-between flex-column">
             <div class="cartmini__top-wrapper">
                 <div class="cartmini__top p-relative">
@@ -115,8 +119,6 @@
                         <a href="contact.html#" class="cartmini__del"><i class="fa-regular fa-xmark"></i></a>
                     </div>
                 </div>
-                <!-- for wp -->
-                <!-- if no item in cart -->
                 <div class="cartmini__empty text-center d-none">
                     <img src="{% static 'assets/img/product/cartmini/empty-cart.png' %}" alt="">
                     <p>Your Cart is empty</p>
@@ -134,146 +136,197 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- cart mini area end -->
+    </div> -->
+<!-- cart mini area end -->
 
-     <!-- header area start -->
-     <header>
-        <div class="tp-header-area tp-header-style-primary tp-header-height">
-           <!-- header top start  -->
-           <div class="tp-header-top-2 p-relative z-index-11 tp-header-top-border d-none d-md-block">
-              <div class="container">
-                 <div class="row align-items-center">
-                    <div class="col-md-6">
-                       <div class="tp-header-info d-flex align-items-center">
-                          <div class="tp-header-info-item">
-                                {% if settings.facebook %}
-                                <a href="{{settings.facebook}}"><i style="color: blue;" class="fa-brands fa-facebook-f"></i></a>
-                                {% endif %}
-                                {% if settings.instagram %}
-                                <a href="{{settings.instagram}}"><i style="color: blue;" class="fa-brands fa-instagram"></i></a>
-                                {% endif %}
-                                {% if settings.twitter %}
-                                <a href="{{settings.twitter}}"><i style="color: blue;" class="fa-brands fa-twitter"></i></a>
-                                {% endif %}
-                             </a>
-                          </div>
-                          <div class="tp-header-info-item">
-                             <a href="tel:{{settings.phone}}">
-                                <span>
-                                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M1.359 2.73916C1.59079 2.35465 2.86862 0.958795 3.7792 1.00093C4.05162 1.02426 4.29244 1.1883 4.4881 1.37943H4.48885C4.93737 1.81888 6.22423 3.47735 6.29648 3.8265C6.47483 4.68282 5.45362 5.17645 5.76593 6.03954C6.56213 7.98771 7.93402 9.35948 9.88313 10.1549C10.7455 10.4679 11.2392 9.44752 12.0956 9.62511C12.4448 9.6981 14.1042 10.9841 14.5429 11.4333V11.4333C14.7333 11.6282 14.8989 11.8698 14.9214 12.1422C14.9553 13.1016 13.4728 14.3966 13.1838 14.5621C12.502 15.0505 11.6125 15.0415 10.5281 14.5373C7.50206 13.2784 2.66618 8.53401 1.38384 5.39391C0.893174 4.31561 0.860062 3.42016 1.359 2.73916Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                      <path d="M9.84082 1.18318C12.5534 1.48434 14.6952 3.62393 15 6.3358" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                      <path d="M9.84082 3.77927C11.1378 4.03207 12.1511 5.04544 12.4039 6.34239" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                   </svg>                                   
-                                </span> {{settings.phone}}
-                             </a>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="col-md-6">
-                       <div class="tp-header-top-right tp-header-top-black d-flex align-items-center justify-content-end">
-                          <div class="tp-header-top-menu d-flex align-items-center justify-content-end">
-                             <div class="tp-header-top-menu-item tp-header-setting">
-                                <span class="tp-header-setting-toggle" id="tp-header-setting-toggle">Настройки</span>
-                                {% if user.is_authenticated %}
-                                <ul>
-                                   <li>
-                                      <a href="{% url 'profile' user.username %}">Профиль</a>
-                                   </li>
-                                   <li>
-                                      <a href="{% url 'logout' %}">Выйти</a>
-                                   </li>
-                                </ul>
-                                {% else %}
-                                <ul>
-                                    <li>
-                                       <a href="{% url 'login' %}">Войти</a>
-                                    </li>
-                                    <li>
-                                       <a href="{% url 'register' %}">Создать аккаунт</a>
-                                    </li>
-                                 </ul>
-                                 {% endif %}
-                             </div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
+<!-- header area start -->
+<header>
+   <div class="tp-header-area tp-header-style-primary tp-header-height">
+      <!-- header top start  -->
+      <div class="tp-header-top-2 p-relative z-index-11 tp-header-top-border d-none d-md-block">
+         <div class="container">
+            <div class="row align-items-center">
+               <div class="col-md-6">
+                  <div class="tp-header-info d-flex align-items-center">
+                     <div class="tp-header-info-item">
+                        {% if settings.facebook %}
+                        <a href="{{settings.facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
+                        {% endif %}
+                        {% if settings.instagram %}
+                        <a href="{{settings.instagram}}"><i class="fa-brands fa-instagram"></i></a>
+                        {% endif %}
+                        {% if settings.twitter %}
+                        <a href="{{settings.twitter}}"><i class="fa-brands fa-twitter"></i></a>
+                        {% endif %}
+                        </a>
+                     </div>
+                     <div class="tp-header-info-item">
+                        <a href="tel:{{settings.phone}}">
+                           <span>
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                 <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M1.359 2.73916C1.59079 2.35465 2.86862 0.958795 3.7792 1.00093C4.05162 1.02426 4.29244 1.1883 4.4881 1.37943H4.48885C4.93737 1.81888 6.22423 3.47735 6.29648 3.8265C6.47483 4.68282 5.45362 5.17645 5.76593 6.03954C6.56213 7.98771 7.93402 9.35948 9.88313 10.1549C10.7455 10.4679 11.2392 9.44752 12.0956 9.62511C12.4448 9.6981 14.1042 10.9841 14.5429 11.4333V11.4333C14.7333 11.6282 14.8989 11.8698 14.9214 12.1422C14.9553 13.1016 13.4728 14.3966 13.1838 14.5621C12.502 15.0505 11.6125 15.0415 10.5281 14.5373C7.50206 13.2784 2.66618 8.53401 1.38384 5.39391C0.893174 4.31561 0.860062 3.42016 1.359 2.73916Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                 <path d="M9.84082 1.18318C12.5534 1.48434 14.6952 3.62393 15 6.3358"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                 <path d="M9.84082 3.77927C11.1378 4.03207 12.1511 5.04544 12.4039 6.34239"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                              </svg>
+                           </span> {{settings.phone}}
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="tp-header-top-right tp-header-top-black d-flex align-items-center justify-content-end">
+                     <div class="tp-header-top-menu d-flex align-items-center justify-content-end">
+                        <div class="tp-header-top-menu-item tp-header-setting">
+                           <span class="tp-header-setting-toggle" id="tp-header-setting-toggle">Настройки</span>
+                           {% if user.is_authenticated %}
+                           <ul>
+                              <li>
+                                 <a href="{% url 'profile' user.username %}">Профиль</a>
+                              </li>
+                              <li>
+                                 <a href="{% url 'logout' %}">Выйти</a>
+                              </li>
+                           </ul>
+                           {% else %}
+                           <ul>
+                              <li>
+                                 <a href="{% url 'login' %}">Войти</a>
+                              </li>
+                              <li>
+                                 <a href="{% url 'register' %}">Создать аккаунт</a>
+                              </li>
+                           </ul>
+                           {% endif %}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
 
-           <!-- header bottom start -->
-           <div id="header-sticky" class="tp-header-bottom-2 tp-header-sticky">
-              <div class="container">
-                 <div class="tp-mega-menu-wrapper p-relative">
-                    <div class="row align-items-center">
-                       <div class="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6">
-                          <div class="logo">
-                             <a href="{% url 'index' %}">
-                                <img src="{{settings.logo.url}}" style="width: 40%; height: 40%; border-radius: 50%;" alt="logo">
-                             </a>
-                          </div>
-                       </div>
-                       <div class="col-xl-5 d-none d-xl-block">
-                          <div class="main-menu menu-style-2">
-                             <nav class="tp-main-menu-content">
-                                <ul>
-                                   <li><a href="{% url 'index' %}">Главная</a> </li>
-                                   <li> <a href="{% url 'about' %}">О нас</a></li>
-                                   <li> <a href="{% url 'news' %}">Новости</a></li>
-                                   <li><a href="{% url 'category' %}">Категории</a></li>
-                                   <li><a href="{% url 'products' %}">Все продукты</a></li>
-                                   <li><a href="{% url 'contact' %}">Контакты</a></li>
-                                </ul>
-                             </nav>
-                          </div>
-                          <div class="tp-category-menu-wrapper d-none">
-                             <nav class="tp-category-menu-content">
-                                <ul>
-                                    {% for category in footer_categories %}
-                                    <li>
-                                       <a href="{% url 'category_detail' category.slug %}">
-                                          <span><img src="{{category.image.url}}" style="height: 35px;" alt="product-category">
-                                          </span>
-                                             ---   {{category.title}}</a>
-                                    </li>
-                                    {% endfor %}
-                                 </ul>
-                             </nav>
-                          </div>
-                       </div>
-                       <div class="col-xl-5 col-lg-7 col-md-7 col-sm-8 col-6">
-                          <div class="tp-header-bottom-right d-flex align-items-center justify-content-end pl-30">
-                             <div class="tp-header-search-2 d-none d-sm-block">
-                                <form action="{% url 'search' %}" method="post">
-                                    {% csrf_token %}
-                                   <input name="query" type="text" placeholder="Искать продукт" value="{{ query }}">
-                                   <button type="submit">
-                                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                         <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                         <path d="M18.9999 19L14.6499 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                      </svg>                                       
-                                   </button>
-                                </form>
-                             </div>
-                             <div class="tp-header-action d-flex align-items-center ml-30">
-                                <div class="tp-header-action-item tp-header-hamburger mr-20 d-xl-none">
-                                   <button type="button" class="tp-offcanvas-open-btn">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" viewBox="0 0 30 16">
-                                         <rect x="10" width="20" height="2" fill="currentColor"/>
-                                         <rect x="5" y="7" width="25" height="2" fill="currentColor"/>
-                                         <rect x="10" y="14" width="20" height="2" fill="currentColor"/>
-                                      </svg>
-                                   </button>
-                                </div>
-                             </div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
-        </div>
-     </header>
-     <!-- header area end -->
+      <!-- header bottom start -->
+      <div id="header-sticky" class="tp-header-bottom-2 tp-header-sticky">
+         <div class="container">
+            <div class="tp-mega-menu-wrapper p-relative">
+               <div class="row align-items-center">
+                  <div class="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6">
+                     <div class="logo">
+                        <a href="{% url 'index' %}">
+                           <img src="{{settings.logo.url}}" style="width: 40%; height: 40%; border-radius: 50%;"
+                              alt="logo">
+                        </a>
+                     </div>
+                  </div>
+                  <div class="col-xl-5 d-none d-xl-block">
+                     <div class="main-menu menu-style-2">
+                        <nav class="tp-main-menu-content">
+                           <ul>
+                              <li><a href="{% url 'index' %}">Главная</a> </li>
+                              <li> <a href="{% url 'about' %}">О нас</a></li>
+                              <li> <a href="{% url 'news' %}">Новости</a></li>
+                              <li><a href="{% url 'category' %}">Категории</a></li>
+                              <li><a href="{% url 'products' %}">Все продукты</a></li>
+                              <li><a href="{% url 'contact' %}">Контакты</a></li>
+                           </ul>
+                        </nav>
+                     </div>
+                     <div class="tp-category-menu-wrapper d-none">
+                        <nav class="tp-category-menu-content">
+                           <ul>
+                              {% for category in footer_categories %}
+                              <li>
+                                 <a href="{% url 'category_detail' category.slug %}">
+                                    <span><img src="{{category.image.url}}" style="height: 35px;"
+                                          alt="product-category">
+                                    </span>
+                                    --- {{category.title}}</a>
+                              </li>
+                              {% endfor %}
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+                  <div class="col-xl-5 col-lg-7 col-md-7 col-sm-8 col-6">
+                     <div class="tp-header-bottom-right d-flex align-items-center justify-content-end pl-30">
+                        <div class="tp-header-search-2 d-none d-sm-block">
+                           <form action="{% url 'search' %}" method="post">
+                              {% csrf_token %}
+                              <input name="query" type="text" placeholder="Искать продукт" value="{{ query }}">
+                              <button type="submit">
+                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                       d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+                                       stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                       stroke-linejoin="round" />
+                                    <path d="M18.9999 19L14.6499 14.65" stroke="currentColor" stroke-width="2"
+                                       stroke-linecap="round" stroke-linejoin="round" />
+                                 </svg>
+                              </button>
+                           </form>
+                        </div>
+                        <div class="tp-header-action d-flex align-items-center ml-30">
+                           <div class="tp-header-action-item">
+                              <button class="tp-header-action-btn tp-search-open-btn d-lg-none d-xl-none">
+                                 <i class="fas fa-search"></i>
+                              </button>
+                           </div>
+                           <div class="tp-header-action-item tp-header-hamburger mr-20 d-xl-none">
+                              <button type="button" class="tp-offcanvas-open-btn">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" viewBox="0 0 30 16">
+                                    <rect x="10" width="20" height="2" fill="currentColor" />
+                                    <rect x="5" y="7" width="25" height="2" fill="currentColor" />
+                                    <rect x="10" y="14" width="20" height="2" fill="currentColor" />
+                                 </svg>
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</header>
+<!-- header area end -->
+
+<!-- search area start -->
+<section class="tp-search-area">
+   <div class="container">
+      <div class="row">
+         <div class="col-xl-12">
+            <div class="tp-search-form">
+               <div class="tp-search-close text-center mb-20">
+                  <button class="tp-search-close-btn tp-search-close-btn"></button>
+               </div>
+               <form action="{% url 'search' %}" method="post">
+                  {% csrf_token %}
+                  <div class="tp-search-input mb-10">
+                     <input name="query" type="text" placeholder="Искать продукт" value="{{ query }}">
+                     <button type="submit">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <path
+                              d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                           <path d="M18.9999 19L14.6499 14.65" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                     </button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- search area end -->
