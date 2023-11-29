@@ -249,6 +249,7 @@
                                           <div class="tp-product-details-review-form">
                                              <h3 class="tp-product-details-review-form-title">Оставьте отзыв продукта</h3>
                                              <br>
+                                             {% if user.is_authenticated %}
                                              <p>Ваш адрес электронной почты не будет опубликован</p>
                                              <br>
                                              <form method="post" action="{% url 'product_detail' product.id %}">
@@ -267,6 +268,13 @@
                                                    <button class="tp-product-details-review-btn" type="submit">Отправить</button>
                                                 </div>
                                              </form>
+                                                {% else %}
+                                                <span>Пройдите регистрацию чтобы оставить отзыв</span><br>
+                                                <br>
+                                                <div>
+                                                   <a class="tp-product-details-review-btn" href="{% url 'register' %}"><button >Зарегистрироваться</button></a>
+                                                </div>
+                                                {% endif %}
                                           </div>
                                        </div>
                                     </div>
