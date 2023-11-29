@@ -1,4 +1,5 @@
 from django.db import models
+from apps.users.models import User
 
 # Create your models here.
 class Category(models.Model):
@@ -11,6 +12,7 @@ class Category(models.Model):
     )
     image = models.ImageField(
         max_length=1000,
+        upload_to='category/',
         verbose_name="Фотография категории",
         default='no_image.jpg'
     )
@@ -52,7 +54,7 @@ class Product(models.Model):
         verbose_name="Рекомендуемые продукты"
     )
     sale = models.BooleanField(
-        default=False, 
+        default=False,
         verbose_name="Распродажа"
     )
     price = models.CharField(
@@ -66,21 +68,25 @@ class Product(models.Model):
     )
     image = models.ImageField(
         max_length=1000,
+        upload_to='product/',
         verbose_name="Фотография продукта",
         default='no_image.jpg'
     )
     image_2 = models.ImageField(
         max_length=1000,
+        upload_to='product/',
         verbose_name="Фотография продукта №2 (Другая расцветка или другой ракурс)",
         default='no_image.jpg'
     )
     image_3 = models.ImageField(
         max_length=1000,
+        upload_to='product/',
         verbose_name="Фотография продукта №3 (Другая расцветка или другой ракурс)",
         default='no_image.jpg'
     )
     image_4 = models.ImageField(
         max_length=1000,
+        upload_to='product/',
         verbose_name="Фотография продукта №4 (Другая расцветка или другой ракурс)",
         default='no_image.jpg'
     )
@@ -99,6 +105,7 @@ class Product(models.Model):
     )
     about_product_image = models.ImageField(
         max_length=1000,
+        upload_to='product/',
         verbose_name="Фотография продукта для описания",
         default='no_image.jpg'
     )
@@ -109,3 +116,49 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
+
+class Characteristic(models.Model):
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE,
+        related_name="characteristics",
+        verbose_name="Товар"
+    )
+    name = models.CharField(
+        max_length=300,
+        verbose_name="Название характеристики"
+    )
+    value = models.CharField(
+        max_length=300,
+        verbose_name="Значение характеристики"
+    )
+
+    def __str__(self):
+        return f"{self.product.title} - {self.name}"
+
+    class Meta:
+        verbose_name = "Характеристика"
+        verbose_name_plural = "Характеристики"
+
+
+class ReviewProduct(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        Product, on_delete=models.SET_NULL,
+        related_name="review_product",
+        blank=True, null=True
+    )
+    message = models.TextField(
+        verbose_name="Текст отзыва",
+        null=True,blank=True
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    post = models.BooleanField(
+        verbose_name="Выложить на сайт",
+        default=False
+    )
+    def __str__(self):
+        return f"Отзыв для продукта {self.product}"
+
+    class Meta:
+        verbose_name = "Отзыв продукта"
+        verbose_name_plural = "Отзывы продуктов"

@@ -36,7 +36,7 @@
                            <h3 class="tp-category-main-title">
                               <a href="{% url 'category_detail' category.slug %}">{{category.title}}</a>
                            </h3>
-                           <span class="tp-category-main-item">23 Products</span>
+                           <span class="tp-category-main-item">{{category.category_products.all.count}} продуктов</span>
                         </div>
                      </div>
                   </div>

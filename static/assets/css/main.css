@@ -13271,7 +13271,7 @@ div.tp-blog-thumb img {
 }
 @media (max-width: 575px) {
   .profile__main-inner {
-    margin-bottom: 20px;
+    margin: 0 auto;
   }
 }
 .profile__main-thumb {
@@ -18424,6 +18424,7 @@ product all slider
   border: 0;
   font-weight: 500;
   font-size: 14px;
+  
 }
 .tp-shop-widget-filter-info .tp-shop-widget-filter-btn {
   font-weight: 400;
@@ -21899,3 +21900,11 @@ product all slider
 }
 
 /*# sourceMappingURL=main.css.map */
+
+.update_profile_image{
+  width: 50%;
+  color: white;
+  background-color: #003eff;
+  border-radius: 10%;
+  line-height: 100%;
+}

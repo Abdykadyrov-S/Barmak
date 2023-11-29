@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Q
 
 from apps.settings.models import Settings, About
-from .models import Product, Category
+from .models import Product, Category, ReviewProduct
 
 # Create your views here.
 
@@ -36,7 +36,30 @@ def product_detail(request, id):
     product = Product.objects.get(id=id)
     about = About.objects.latest('id')
     footer_categories = Category.objects.all().order_by('?')
+    reviews = ReviewProduct.objects.filter(product=product).select_related('user')
+    if request.method == "POST":
+        user = request.user
+        product = Product.objects.get(id=id)
+        message = request.POST.get('message', '')
+
+        ReviewProduct.objects.create(user=user, product=product, message=message)
+
+        return redirect('product_detail', id=id)
     return render(request, 'shop/product-details.html', locals())
+
+def product_list(request):
+    settings = Settings.objects.latest('id')
+    # all_products = Product.objects.all()
+    print(request.GET.get('min_price'))
+    user_prices = request.GET.get('min_price').replace(" ", "").split("-")
+    print(user_prices)
+    min_price = int(user_prices[0])
+    max_price = int(user_prices[1])
+    all_products = Product.objects.filter(price__range=(min_price, max_price))
+    print(all_products)
+
+    return render(request, 'shop/all_products.html', locals())
+
 
 def search(request):
     settings = Settings.objects.latest('id')

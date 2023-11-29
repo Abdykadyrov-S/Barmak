@@ -334,7 +334,94 @@
 	// 11. Theme Settings Js
 
 	// settings append in body
-	
+	function tp_settings_append($x){
+		var settings = $('body');
+		let dark;
+		$x == true ? dark = 'd-block' : dark = 'd-none';
+		var settings_html = `<div class="tp-theme-settings-area transition-3">
+		<div class="tp-theme-wrapper">
+		   <div class="tp-theme-header text-center">
+			  <h4 class="tp-theme-header-title">Harry Theme Settings</h4>
+		   </div>
+
+		   <!-- THEME TOGGLER -->
+		   <div class="tp-theme-toggle mb-20 ${dark}">
+			  <label class="tp-theme-toggle-main" for="tp-theme-toggler">
+				 <span class="tp-theme-toggle-dark"><i class="fa-light fa-moon"></i> Dark</span>
+					<input type="checkbox" id="tp-theme-toggler">
+					<i class="tp-theme-toggle-slide"></i>
+				 <span class="tp-theme-toggle-light active"><i class="fa-light fa-sun-bright"></i> Light</span>
+			  </label>
+		   </div>
+
+		   <!--  RTL SETTINGS -->
+		   <div class="tp-theme-dir mb-20">
+			  <label class="tp-theme-dir-main" for="tp-dir-toggler">
+				 <span class="tp-theme-dir-rtl"> RTL</span>
+					<input type="checkbox" id="tp-dir-toggler">
+					<i class="tp-theme-dir-slide"></i>
+				 <span class="tp-theme-dir-ltr active"> LTR</span>
+			  </label>
+		   </div>
+
+		   <!-- COLOR SETTINGS -->
+		   <div class="tp-theme-settings">
+			  <div class="tp-theme-settings-wrapper">
+				 
+				 <div class="row row-cols-4 gy-2 gx-2">
+					<div class="col">
+					   <div class="tp-theme-color-item tp-color-active">
+						  <button class="tp-theme-color-btn tp-color-settings-btn d-none" data-color-default="#0989FF" type="button" data-color="#0989FF"></button>
+						  <button class="tp-theme-color-btn tp-color-settings-btn" type="button" data-color="#0989FF"></button>
+					   </div>
+					</div>
+					<div class="col">
+					   <div class="tp-theme-color-item tp-color-active">
+						  <button class="tp-theme-color-btn tp-color-settings-btn" type="button" data-color="#821F40"></button>
+					   </div>
+					</div>
+					<div class="col">
+					   <div class="tp-theme-color-item tp-color-active">
+						  <button class="tp-theme-color-btn tp-color-settings-btn" type="button" data-color="#BD844C"></button>
+					   </div>
+					</div>
+					<div class="col">
+					   <div class="tp-theme-color-item tp-color-active">
+						  <button class="tp-theme-color-btn tp-color-settings-btn" type="button" data-color="#678E61"></button>
+					   </div>
+					</div>
+					<div class="col">
+					   <div class="tp-theme-color-item tp-color-active">
+						  <button class="tp-theme-color-btn tp-color-settings-btn" type="button" data-color="#FD4B6B"></button>
+					   </div>
+					</div>
+					<div class="col">
+					   <div class="tp-theme-color-item tp-color-active">
+						  <button class="tp-theme-color-btn tp-color-settings-btn" type="button" data-color="#AB9774"></button>
+					   </div>
+					</div>
+					<div class="col">
+                        <div class="tp-theme-color-item tp-color-active">
+                           <button class="tp-theme-color-btn tp-color-settings-btn" type="button" data-color="#FF6736"></button>
+                        </div>
+                     </div>
+					<div class="col">
+					   <div class="tp-theme-color-item tp-color-active">
+						  <button class="tp-theme-color-btn tp-color-settings-btn" type="button" data-color="#FFD43A"></button>
+					   </div>
+					</div>
+				 </div>
+			  </div>
+			  <div class="tp-theme-color-input">
+				 <h6>Choose Custom Color</h6>
+				 <input type="color" id="tp-color-setings-input" value="#F50963">
+				 <label id="tp-theme-color-label" for="tp-color-setings-input"></label>
+			  </div>
+		   </div>
+		</div>
+	 </div>`;
+	 settings.append(settings_html);
+	}
 	tp_settings_append(false); // if want to enable dark light mode then send "true";
 
 	// settings open btn
@@ -1626,25 +1713,25 @@
 			range: true,
 			min: 0,
 			max: 500,
-			values: [75, 300],
+			values: [300, 20000],
 			slide: function (event, ui) {
-				$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+				$("#amount").val(" " + ui.values[0] + " - " + ui.values[1]);
 			}
 		});
-		$("#amount").val("$" + $("#slider-range").slider("values", 0) +
-			" - $" + $("#slider-range").slider("values", 1));
+		$("#amount").val(" " + $("#slider-range").slider("values", 0) +
+			" - " + $("#slider-range").slider("values", 1));
 
 		$("#slider-range-offcanvas").slider({
 			range: true,
 			min: 0,
-			max: 500,
-			values: [75, 300],
+			max: 200000,
+			values: [300, 100000],
 			slide: function (event, ui) {
-				$("#amount-offcanvas").val("$" + ui.values[0] + " - $" + ui.values[1]);
+				$("#amount-offcanvas").val(" " + ui.values[0] + " - " + ui.values[1]);
 			}
 		});
-		$("#amount-offcanvas").val("$" + $("#slider-range-offcanvas").slider("values", 0) +
-			" - $" + $("#slider-range-offcanvas").slider("values", 1));
+		$("#amount-offcanvas").val(" " + $("#slider-range-offcanvas").slider("values", 0) +
+			" - " + $("#slider-range-offcanvas").slider("values", 1));
 	
 		
 
@@ -1690,11 +1777,19 @@
 		$("#slider-range").slider({
 			range: true,
 			min: 0,
-			max: 500,
-			values: [75, 300],
+			max: 200000,
+			values: [300, 100000],
 			slide: function (event, ui) {
-			  $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+			  $("#amount").val(" " + ui.values[0] + " - " + ui.values[1]);
 			},
+		});
+
+		$('.tp-shop-widget-filter-btn').on('click', function () {
+			var minPrice = $("#slider-range-offcanvas").slider("values", 0);
+			var maxPrice = $("#slider-range-offcanvas").slider("values", 1);
+	
+			// Перенаправьте пользователя на страницу товаров с параметрами фильтрации
+			window.location.href = "/products/?min_price=" + minPrice + "&max_price=" + maxPrice;
 		});
 	}
 	tp_ecommerce();
