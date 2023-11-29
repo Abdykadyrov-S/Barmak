@@ -3,37 +3,35 @@
 {% block content %}
 {% include 'include/header.html' %}   
 
-    <!-- filter offcanvas area start -->
-    <div class="tp-filter-offcanvas-area tp-filter-offcanvas-right">
-      <div class="tp-filter-offcanvas-wrapper">
-         <div class="tp-filter-offcanvas-close">
-            <button type="button" class="tp-filter-offcanvas-close-btn filter-close-btn">
-               <i class="fa-solid fa-xmark"></i>
-               Закрыть
-            </button>
-         </div>
-         <div class="tp-shop-sidebar">
-            <!-- filter -->
-            <div class="tp-shop-widget mb-35">
-               <h3 class="tp-shop-widget-title no-border">Сортировать по ценам</h3>
+      <!-- filter offcanvas area start -->
+      <div class="tp-filter-offcanvas-area tp-filter-offcanvas-right">
+         <div class="tp-filter-offcanvas-wrapper">
+            <div class="tp-filter-offcanvas-close">
+               <button type="button" class="tp-filter-offcanvas-close-btn filter-close-btn">
+                  <i class="fa-solid fa-xmark"></i>
+                  Close
+               </button>
+            </div>
+            <div class="tp-shop-sidebar">
+               <!-- filter -->
+               <div class="tp-shop-widget mb-35">
+                  <h3 class="tp-shop-widget-title no-border">Price Filter</h3>
 
-               <div class="tp-shop-widget-content">
-                  <div class="tp-shop-widget-filter">
-                      <form id="price-filter-form" method="get" action="{% url 'product_list' %}">
-                          <div id="slider-range-offcanvas" class="mb-10"></div>
-                          <div class="tp-shop-widget-filter-info d-flex align-items-center justify-content-between">
-                              <span class="input-range">
-                                  <input name="min_price" type="text" id="amount-offcanvas" readonly>
-                              </span>
-                              <button class="tp-shop-widget-filter-btn" type="submit">Filter</button>
-                          </div>
-                      </form>
+                  <div class="tp-shop-widget-content">
+                     <div class="tp-shop-widget-filter">
+                        <div id="slider-range-offcanvas" class="mb-10"></div>
+                        <div class="tp-shop-widget-filter-info d-flex align-items-center justify-content-between">
+                           <span class="input-range">
+                              <input type="text" id="amount-offcanvas" readonly>
+                           </span>
+                           <button class="tp-shop-widget-filter-btn" type="button">Filter</button>
+                        </div>
+                     </div>
                   </div>
                </div>
-            </div>
-            <!-- status -->
-            <div class="tp-shop-widget mb-50">
-               <h3 class="tp-shop-widget-title">Статус продукта</h3>
+               <!-- status -->
+               <div class="tp-shop-widget mb-50">
+                  <h3 class="tp-shop-widget-title">Product Status</h3>
 
                <div class="tp-shop-widget-content">
                   <div class="tp-shop-widget-checkbox">
