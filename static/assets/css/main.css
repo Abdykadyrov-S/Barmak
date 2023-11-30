@@ -191,7 +191,11 @@ li,
 .tp-collection-countdown .tp-product-countdown ul li:not(:last-child)::after, .tp-category-mobile-menu ul li.has-dropdown > a .dropdown-toggle-btn, .tp-main-menu-mobile ul li.has-dropdown > a .dropdown-toggle-btn, .tp-header-side-menu ul li.has-dropdown > a::after, .offcanvas__categoryssss ul li.has-dropdown > a .dropdown-toggle-btn, .tp-offcanvas-category-toggle::after {
   font-family: var(--tp-ff-fontawesome);
 }
-
+.flexForIcon{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 /* transform */
 .tp-collection-countdown .tp-product-countdown ul li:not(:last-child)::after, .tp-special-arrow button, .tp-featured-slider-arrow button:not(:last-child)::after, .tp-testimonial-arrow button, .tp-testimonial-arrow-5 button:not(:last-child)::after, .tp-feature-border-2 .row [class*=col-] .tp-feature-item-2::after, .tp-feature-border-3 .tp-feature-item-2:not(:last-child)::after, .tp-feature-border-5 .row [class*=col-] .tp-feature-item-5::after, .tp-slider-2-dot.tp-swiper-dot, .tp-slider-3-dot.tp-swiper-dot, .tp-slider-feature-item-3:not(:last-child)::after, .tp-slider-arrow-3 button, .tp-slider-4-dot.tp-swiper-dot, .tp-slider-arrow-4 button, .tp-sidebar-search-input button, .tp-postbox-details-meta span:not(:last-child)::after, .tp-category-mobile-menu ul li.has-dropdown > a .dropdown-toggle-btn, .tp-main-menu-mobile ul li.has-dropdown > a .dropdown-toggle-btn, .tp-header-search-input-box-5 button, .tp-header-search-input-5 span, .tp-header-side-menu ul li.has-dropdown > a::after, .tp-product-tab-2 .nav-tabs .nav-link:not(:first-child)::after, .breadcrumb__list span:not(:last-child)::after, .offcanvas__categoryssss ul li.has-dropdown > a .dropdown-toggle-btn, .tp-offcanvas-category-toggle::after {
   -webkit-transform: translateY(-50%);
