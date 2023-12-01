@@ -6505,6 +6505,46 @@ body .ui-tooltip {
   width: 100%;
   position: relative;
 }
+
+
+
+.liveSearchResults {
+  display: none; /* Скрыть, пока нет результатов */
+  position: absolute;
+  top: 100%; /* Позиционировать непосредственно под input */
+  left: 0;
+  z-index: 1000; /* Убедитесь, что список будет над другими элементами */
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Плавный переход для свойства opacity */
+  background-color: #fff;
+  width: 100%;
+  list-style: none;
+  padding: 20px;
+}
+
+.liveSearchResults li{
+  color: #000;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.liveSearchResults li img{
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.liveSearchResults li:hover{
+  color: #003eff;
+}
+
+.liveSearchResults.visible {
+  display: block;
+  opacity: 1;
+}
+
+
 .tp-header-search-2 input {
   background: var(--tp-grey-4);
   border: 1px solid rgba(1, 15, 28, 0.1);
@@ -21918,3 +21958,4 @@ product all slider
   border-radius: 10%;
   line-height: 100%;
 }
+

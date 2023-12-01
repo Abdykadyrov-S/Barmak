@@ -258,9 +258,9 @@
                   <div class="col-xl-5 col-lg-7 col-md-7 col-sm-8 col-6">
                      <div class="tp-header-bottom-right d-flex align-items-center justify-content-end pl-30">
                         <div class="tp-header-search-2 d-none d-sm-block">
-                           <form action="{% url 'search' %}" method="post">
+                           <form action="{% url 'search' %}" class="liveFormSearch" method="post">
                               {% csrf_token %}
-                              <input name="query" type="text" placeholder="Искать продукт" value="{{ query }}">
+                              <input name="query" type="text" placeholder="Искать продукт" autocomplete="off" class="liveSearchBox" value="{{ query }}">
                               <button type="submit">
                                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -272,6 +272,7 @@
                                        stroke-linecap="round" stroke-linejoin="round" />
                                  </svg>
                               </button>
+                              <ul class="liveSearchResults"></ul>
                            </form>
                         </div>
                         <div class="tp-header-action d-flex align-items-center ml-30">
@@ -309,10 +310,10 @@
                <div class="tp-search-close text-center mb-20">
                   <button class="tp-search-close-btn tp-search-close-btn"></button>
                </div>
-               <form action="{% url 'search' %}" method="post">
+               <form action="{% url 'search' %}" class="liveFormSearchMobile" method="post">
                   {% csrf_token %}
                   <div class="tp-search-input mb-10">
-                     <input name="query" type="text" placeholder="Искать продукт" value="{{ query }}">
+                     <input name="query" type="text" autocomplete="off" class="liveSearchBoxMobile" placeholder="Искать продукт" value="{{ query }}">
                      <button type="submit">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path
@@ -322,6 +323,8 @@
                               stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                      </button>
+                     <!-- Список для отображения результатов поиска -->
+                     <ul class="liveSearchResults"></ul>
                   </div>
                </form>
             </div>

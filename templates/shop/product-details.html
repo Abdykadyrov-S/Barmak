@@ -78,6 +78,7 @@
                      <div class="col-xl-5 col-lg-6">
                         <div class="tp-product-details-wrapper">
                            <h3 class="tp-product-details-title">{{product.title}}</h3>
+                           
    
                            <!-- inventory details -->
                            <div class="tp-product-details-inventory d-flex align-items-center mb-10">
@@ -90,7 +91,7 @@
                                     <span><i class="fa-solid fa-star"></i></span>
                                  </div>
                                  <div class="tp-product-details-reviews">
-                                    <span>(36 Отзывы)</span>
+                                    <span>{{product.review_product.all.count}} отзыва</span>
                                  </div>
                               </div>
                            </div>

@@ -64,17 +64,32 @@ def profile(request, username):
     if request.method == "POST":
         print("post")
         if 'update' in request.POST:
+            print("update")
             username = request.POST.get('username')
-            first_name = request.POST.get('first_name')
-            last_name = request.POST.get('last_name')
             email = request.POST.get('email')
             phone = request.POST.get('phone')
-            user.username = username 
-            user.first_name = first_name
-            user.last_name = last_name
-            user.email = email 
-            user.phone = phone 
-            user.save()
+            facebook = request.POST.get('facebook')
+            twitter = request.POST.get('twitter')
+            instagram = request.POST.get('instagram')
+            telegram = request.POST.get('telegram')
+            gender = request.POST.get('gender')
+            location = request.POST.get('location')
+            biography = request.POST.get('biography')
+            user.username = username
+            user.email = email
+            user.phone = phone
+            user.facebook = facebook
+            user.twitter = twitter
+            user.instagram = instagram
+            user.telegram = telegram
+            user.gender = gender
+            user.location = location
+            user.biography = biography
+            try:
+                user.save()
+                return redirect('profile', user.username)
+            except Exception as e:
+                print(f"Error saving user: {e}")
             return redirect('profile', user.username)
         if 'update_profile_image' in request.POST:
             print("profil")

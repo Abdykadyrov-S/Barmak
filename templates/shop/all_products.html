@@ -167,10 +167,11 @@
                                           </div>
                                           <div class="tp-product-content-2 pt-15">
                                              <div class="tp-product-tag-2">
-                                                <a href="shop-no-sidebar.html#">{{ product.title }}</a>
+                                                <a href="{% url 'compare_products' id=product.id %}?product_ids={{ product.id }}">{{ product.title }}</a>
                                              </div>
                                              <h3 class="tp-product-title-2">
-                                                <a href="{% url 'product_detail' product.id %}">{{ product.description  | truncatewords:10 }}</a>
+                                                <!-- <a href="{% url 'product_detail' product.id %}">{{ product.description  | truncatewords:10 }}</a> -->
+                                                <a href="{% url 'compare_products' product.id %}"><i class="fab fa-creative-commons-share"> - Сравнить с другими </i></a>
                                              </h3>
                                              <div class="tp-product-rating-icon tp-product-rating-icon-2">
                                                 <span><i class="fa-solid fa-star"></i></span>

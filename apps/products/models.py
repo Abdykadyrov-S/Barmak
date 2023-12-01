@@ -109,6 +109,9 @@ class Product(models.Model):
         verbose_name="Фотография продукта для описания",
         default='no_image.jpg'
     )
+    
+    def get_characteristics(self):
+        return self.characteristics.all()
 
     def __str__(self):
         return self.title 

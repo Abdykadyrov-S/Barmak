@@ -74,9 +74,38 @@ def product_list(request):
 
 
 def search(request):
+    # query = request.GET.get('q', '')
+    # if query:
+    #     results = Product.objects.filter(Q(id__icontains=query)| Q(title__icontains=query) | Q(description__icontains=query))
+    #     data = list(results.values('id', 'title', 'description'))
+    #     return JsonResponse(data, safe=False)
+    # return JsonResponse([])
+
     query = request.GET.get('q', '')
     if query:
-        results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
-        data = list(results.values('title', 'description'))
+        results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(image__icontains=query)).order_by('-created')[:5]
+        print(results.values('id', 'title', 'description', 'image'))
+        data = list(results.values('id', 'title', 'description', 'image')) 
         return JsonResponse(data, safe=False)
     return JsonResponse([])
+
+
+
+def compare_products(request, id):
+    title = "Сравнение товаров"
+    product = Product.objects.get(id=id)
+    all_products = Product.objects.all().order_by('?')
+    
+    # Получение параметра product_ids из запроса
+    product_ids = request.GET.get('product_ids', '')
+
+    # Преобразование переданных идентификаторов товаров в список целых чисел
+    product_ids = [int(pid) for pid in product_ids.split(',') if pid]
+
+    # Получение объектов продуктов из базы данных
+    products = Product.objects.filter(id__in=product_ids)
+
+    # Получение характеристик для каждого продукта
+    characteristics = {product.id: product.get_characteristics() for product in products}
+
+    return render(request, 'compare.html', locals())
