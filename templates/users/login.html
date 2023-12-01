@@ -2,7 +2,8 @@
 {% load static %}
 {% block content %}
 {% include 'include/header.html' %}
-
+{% load socialaccount %}    
+{% providers_media_js %}
       <main>
 
          <!-- breadcrumb area start -->
@@ -40,9 +41,9 @@
                            <p>У вас нет учетной записи? <span><a href="{% url 'register' %}"> Создать аккаунт</a></span></p>
                         </div>
                         <div class="tp-login-option">
-                           <!-- <div class="tp-login-social mb-10 d-flex flex-wrap align-items-center justify-content-center">
+                           <div class="tp-login-social mb-10 d-flex flex-wrap align-items-center justify-content-center">
                               <div class="tp-login-option-item has-google">
-                                 <a href="login.html#">
+                                 <a href="{% provider_login_url 'google' %}">
                                     <img src="{% static 'assets/img/icon/login/google.svg' %}" alt="">
                                     Продолжить с Google
                                  </a>
@@ -57,7 +58,7 @@
                                     <img class="apple" src="{% static 'assets/img/icon/login/apple.svg' %}" alt="">
                                  </a>
                               </div>
-                           </div> -->
+                           </div>
                            <div class="tp-login-mail text-center mb-40">
                               <p>Войдите в свою учетную запись</a></p>
                            </div>

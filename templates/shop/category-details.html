@@ -3,76 +3,78 @@
 {% block content %}
 {% include 'include/header.html' %}   
 
-      <!-- filter offcanvas area start -->
-      <div class="tp-filter-offcanvas-area tp-filter-offcanvas-right">
+       <!-- filter offcanvas area start -->
+       <div class="tp-filter-offcanvas-area tp-filter-offcanvas-right">
          <div class="tp-filter-offcanvas-wrapper">
             <div class="tp-filter-offcanvas-close">
                <button type="button" class="tp-filter-offcanvas-close-btn filter-close-btn">
                   <i class="fa-solid fa-xmark"></i>
-                  Close
+                  Закрыть
                </button>
             </div>
             <div class="tp-shop-sidebar">
                <!-- filter -->
                <div class="tp-shop-widget mb-35">
-                  <h3 class="tp-shop-widget-title no-border">Price Filter</h3>
-
+                  <h3 class="tp-shop-widget-title no-border">Сортировать по ценам</h3>
+ 
                   <div class="tp-shop-widget-content">
                      <div class="tp-shop-widget-filter">
-                        <div id="slider-range-offcanvas" class="mb-10"></div>
-                        <div class="tp-shop-widget-filter-info d-flex align-items-center justify-content-between">
-                           <span class="input-range">
-                              <input type="text" id="amount-offcanvas" readonly>
-                           </span>
-                           <button class="tp-shop-widget-filter-btn" type="button">Filter</button>
-                        </div>
+                         <form id="price-filter-form" method="get" action="{% url 'product_list' %}">
+                             <div id="slider-range-offcanvas" class="mb-10"></div>
+                             <div class="tp-shop-widget-filter-info d-flex align-items-center justify-content-between">
+                                 <span class="input-range">
+                                     <input name="min_price" type="text" id="amount-offcanvas" readonly>
+                                 </span>
+                                 <button class="tp-shop-widget-filter-btn" type="submit">Фильтр</button>
+                             </div>
+                         </form>
                      </div>
                   </div>
                </div>
                <!-- status -->
                <div class="tp-shop-widget mb-50">
-                  <h3 class="tp-shop-widget-title">Product Status</h3>
-
-               <div class="tp-shop-widget-content">
-                  <div class="tp-shop-widget-checkbox">
-                     <ul class="filter-items filter-checkbox">
-                        <li class="filter-item checkbox">
-                           <input name="popular" id="popular" type="checkbox">
-                           <label for="popular">Популярные</label>
-                        </li>
-                        <li class="filter-item checkbox">
-                          <input name="product_day" id="product_day" type="checkbox">
-                          <label for="product_day">Товар дня</label>
-                       </li>
-                       <li class="filter-item checkbox">
-                          <input name="new" id="new" type="checkbox">
-                          <label for="new">Новые</label>
-                       </li>
-                       <li class="filter-item checkbox">
-                          <input name="featured" id="featured" type="checkbox">
-                          <label for="featured">Рекомендуемые</label>
-                     </ul><!-- .filter-items -->
+                  <h3 class="tp-shop-widget-title">Статус продукта</h3>
+ 
+                  <div class="tp-shop-widget-content">
+                     <div class="tp-shop-widget-checkbox">
+                        <ul class="filter-items filter-checkbox">
+                           <li class="filter-item checkbox">
+                              <input name="popular" id="popular" type="checkbox">
+                              <label for="popular">Популярные</label>
+                           </li>
+                           <li class="filter-item checkbox">
+                             <input name="product_day" id="product_day" type="checkbox">
+                             <label for="product_day">Товар дня</label>
+                          </li>
+                          <li class="filter-item checkbox">
+                             <input name="new" id="new" type="checkbox">
+                             <label for="new">Новые</label>
+                          </li>
+                          <li class="filter-item checkbox">
+                             <input name="featured" id="featured" type="checkbox">
+                             <label for="featured">Рекомендуемые</label>
+                        </ul><!-- .filter-items -->
+                     </div>
                   </div>
                </div>
-            </div>
-            <!-- categories -->
-            <div class="tp-shop-widget mb-50">
-               <h3 class="tp-shop-widget-title">Категории</h3>
-
-               <div class="tp-shop-widget-content">
-                  <div class="tp-shop-widget-categories">
-                     <ul>
-                      {% for category in footer_categories %}
-                      <li><a href="{% url 'category_detail' category.slug %}">{{category.title}}</a></li>
-                      {% endfor %}
-                     </ul>
+               <!-- categories -->
+               <div class="tp-shop-widget mb-50">
+                  <h3 class="tp-shop-widget-title">Категории</h3>
+ 
+                  <div class="tp-shop-widget-content">
+                     <div class="tp-shop-widget-categories">
+                        <ul>
+                         {% for category in footer_categories %}
+                         <li><a href="{% url 'category_detail' category.slug %}">{{category.title}}</a></li>
+                         {% endfor %}
+                        </ul>
+                     </div>
                   </div>
                </div>
             </div>
          </div>
       </div>
-   </div>
-   <!-- filter offcanvas area end -->
+      <!-- filter offcanvas area end -->
 
       <main>
 
@@ -82,10 +84,10 @@
                <div class="row">
                   <div class="col-xxl-12">
                      <div class="breadcrumb__content p-relative z-index-1">
-                        <h3 class="breadcrumb__title">Shop No Sidebar</h3>
+                        <h3 class="breadcrumb__title">{{category.title}}</h3>
                         <div class="breadcrumb__list">
-                           <span><a href="shop-no-sidebar.html#">Home</a></span>
-                           <span>Shop No Sidebar</span>
+                           <span><a href="{% url 'index' %}">Главная страница</a></span>
+                           <span>{{category.title}}</span>
                         </div>
                      </div>
                   </div>

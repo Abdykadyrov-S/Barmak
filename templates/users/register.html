@@ -2,7 +2,8 @@
 {% load static %}
 {% block content %}
 {% include 'include/header.html' %}
-
+{% load socialaccount %}    
+{% providers_media_js %}
 
       <main>
 
@@ -41,9 +42,9 @@
                            <p>У вас уже есть аккаунт?  <span><a href="{% url 'login' %}"> Войти</a></span></p>
                         </div>
                         <div class="tp-login-option">
-                           <!-- <div class="tp-login-social mb-10 d-flex flex-wrap align-items-center justify-content-center">
+                           <div class="tp-login-social mb-10 d-flex flex-wrap align-items-center justify-content-center">
                               <div class="tp-login-option-item has-google">
-                                 <a href="register.html#">
+                                 <a href="{% provider_login_url 'google' %}">
                                     <img src="{% static 'assets/img/icon/login/google.svg' %}" alt="">
                                     Продолжить с Google
                                  </a>
@@ -58,7 +59,7 @@
                                     <img class="apple" src="{% static 'assets/img/icon/login/apple.svg' %}" alt="">
                                  </a>
                               </div>
-                           </div> -->
+                           </div>
                            <div class="tp-login-mail text-center mb-40">
                               <p>Создайте аккаунт по электронной почте</a></p>
                            </div>

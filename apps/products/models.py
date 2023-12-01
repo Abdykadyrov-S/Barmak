@@ -24,10 +24,10 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
 
 class Product(models.Model):
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL,
+    category = models.ManyToManyField(
+        Category,
         related_name="category_products",
-        blank=True, null=True
+        verbose_name="Категории"
     )
     title = models.CharField(
         max_length=300,
