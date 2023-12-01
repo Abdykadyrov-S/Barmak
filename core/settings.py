@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     # apps
     'apps.settings',
-    'apps.telegram',
+    'apps.telegram_bot',
     'apps.products',
     'apps.blog',
     'apps.users',
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.telegram',
 ]
 
 MIDDLEWARE = [

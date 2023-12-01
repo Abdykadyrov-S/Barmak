@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from apps.blog.models import News
 from apps.products.models import Category, Product
-from apps.telegram.views import get_text
+from apps.telegram_bot.views import get_text
 
 
 # Create your views here.
