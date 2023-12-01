@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.db.models import Q
 
 from apps.settings.models import Settings, About
@@ -61,12 +62,21 @@ def product_list(request):
     return render(request, 'shop/all_products.html', locals())
 
 
-def search(request):
-    settings = Settings.objects.latest('id')
-    footer_categories = Category.objects.all().order_by('?')
-    query = request.POST.get('query', '')
-    if query:
-        # Используйте Q-объекты для выполнения поиска в моделях Shop и Product
-        all_products = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
+# def search(request):
+#     settings = Settings.objects.latest('id')
+#     footer_categories = Category.objects.all().order_by('?')
+#     query = request.POST.get('query', '')
+#     if query:
+#         # Используйте Q-объекты для выполнения поиска в моделях Shop и Product
+#         all_products = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
 
-    return render(request, 'shop/all_products.html', locals())
+#     return render(request, 'shop/all_products.html', locals())
+
+
+def search(request):
+    query = request.GET.get('q', '')
+    if query:
+        results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
+        data = list(results.values('title', 'description'))
+        return JsonResponse(data, safe=False)
+    return JsonResponse([])
