@@ -19946,7 +19946,16 @@ product all slider
   border: 1px solid rgba(1, 15, 28, 0.1);
   padding: 15px 25px;
 }
+.tp-compare-table td {
+  max-width: 200px;
+}
+
+.compare-inner-table{
+  margin: 0 auto;
+}
+
 .tp-compare-thumb {
+  margin: 0 auto;
   width: 205px;
 }
 .tp-compare-thumb img {

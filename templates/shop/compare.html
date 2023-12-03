@@ -1,0 +1,114 @@
+{% extends 'include/homepage.html' %}
+{% load static %}
+{% block content %}
+{% include 'include/header.html' %}
+
+<main>
+
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb__area include-bg pt-95 pb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12">
+                    <div class="breadcrumb__content p-relative z-index-1">
+                        <h3 class="breadcrumb__title">Сравнение товаров</h3>
+                        <div class="breadcrumb__list">
+                           <span><a href="/">Главная</a></span>
+                           <span>Сравнение товаров</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+
+    <!-- compare area start -->
+    <section class="tp-compare-area pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    {% if products_to_compare.exists %}
+                    <div class="tp-compare-table table-responsive text-center">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Наименование продукта</th>
+                                    {% for product in products_to_compare %}
+                                    <td class="td-{{ product.id }}">
+                                        <div class="tp-compare-thumb">
+                                            <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                                            <h4 class="tp-compare-product-title">
+                                                <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
+                                            </h4>
+                                        </div>
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>Характеристики</th>
+                                    {% for product in products_to_compare %}
+                                    <td class="td-{{ product.id }}">
+                                        <div class="tp-compare-desc">
+                                            <table class="compare-inner-table">
+                                                {% for characteristic in product.characteristics.all %}
+                                                <tr>
+                                                    <td>{{ characteristic.name }}</td>
+                                                    <td>{{ characteristic.value }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>Price</th>
+                                    {% for product in products_to_compare %}
+                                    <td class="td-{{ product.id }}">
+                                        <div class="tp-compare-price">
+                                            {% if product.old_price %}
+                                                <span class="old-price">{{product.old_price}}</span>
+                                            {% endif %}
+                                            <span>{{product.price}} сом</span>
+                                        </div>
+                                    </td> 
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>Купить в один клик</th>
+                                    {% for product in products_to_compare %}
+                                    <td class="td-{{ product.id }}">
+                                        <div class="tp-compare-add-to-cart">
+                                            <a href="https://wa.me/+996771244745/?text=Здравствуйте! Я хочу купить {{product.title}}. Можем ли мы обсудить детали?"><button class="tp-btn">Купить сейчас</button></a>
+                                        </div>
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                                <tr>
+                                    <th>Удалить из списка</th>
+                                    {% for product in products_to_compare %}
+                                    <td class="td-{{ product.id }}">
+                                        <div class="tp-compare-remove">
+                                            <button data-product-id="{{ product.id }}" class="remove-compare"><i class="fal fa-trash-alt"></i></button>
+                                        </div>
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                        <p>Товаров нет в сравнении.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- compare area end -->
+
+</main>
+
+{% include 'include/footer.html' %}
+{% endblock %}

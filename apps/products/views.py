@@ -1,9 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.views.decorators.http import require_http_methods
 from django.db.models import Q
 
 from apps.settings.models import Settings, About
 from .models import Product, Category, ReviewProduct
+
+import json
 
 # Create your views here.
 
@@ -14,6 +18,7 @@ def category(request):
     footer_categories = Category.objects.all().order_by('?')
     return render(request, 'shop/shop-category.html', locals())
 
+
 def category_detail(request, slug):
     title_page = "категория"
     settings = Settings.objects.latest('id')
@@ -21,6 +26,7 @@ def category_detail(request, slug):
     products = Product.objects.filter(category=category)
     footer_categories = Category.objects.all().order_by('?')
     return render(request, 'shop/category-details.html', locals())
+
 
 def products(request):
     title_page = "Товары"
@@ -30,6 +36,7 @@ def products(request):
     about = About.objects.latest('id')
     footer_categories = Category.objects.all().order_by('?')
     return render(request, 'shop/all_products.html', locals())
+
 
 def product_detail(request, id):
     title_page = "Товар"
@@ -48,6 +55,7 @@ def product_detail(request, id):
         return redirect('product_detail', id=id)
     return render(request, 'shop/product-details.html', locals())
 
+
 def product_list(request):
     settings = Settings.objects.latest('id')
     # all_products = Product.objects.all()
@@ -62,25 +70,7 @@ def product_list(request):
     return render(request, 'shop/all_products.html', locals())
 
 
-# def search(request):
-#     settings = Settings.objects.latest('id')
-#     footer_categories = Category.objects.all().order_by('?')
-#     query = request.POST.get('query', '')
-#     if query:
-#         # Используйте Q-объекты для выполнения поиска в моделях Shop и Product
-#         all_products = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
-
-#     return render(request, 'shop/all_products.html', locals())
-
-
 def search(request):
-    # query = request.GET.get('q', '')
-    # if query:
-    #     results = Product.objects.filter(Q(id__icontains=query)| Q(title__icontains=query) | Q(description__icontains=query))
-    #     data = list(results.values('id', 'title', 'description'))
-    #     return JsonResponse(data, safe=False)
-    # return JsonResponse([])
-
     query = request.GET.get('q', '')
     if query:
         results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(image__icontains=query)).order_by('-created')[:5]
@@ -90,22 +80,41 @@ def search(request):
     return JsonResponse([])
 
 
+def compare_products_view(request):
+    title_page = "Сравнение товаров"
+    settings = Settings.objects.latest('id')
+    footer_categories = Category.objects.all().order_by('?')
 
-def compare_products(request, id):
-    title = "Сравнение товаров"
-    product = Product.objects.get(id=id)
-    all_products = Product.objects.all().order_by('?')
-    
-    # Получение параметра product_ids из запроса
-    product_ids = request.GET.get('product_ids', '')
+    compare_list = request.session.get('compare_list', [])
+    products_to_compare = Product.objects.filter(id__in=compare_list)
 
-    # Преобразование переданных идентификаторов товаров в список целых чисел
-    product_ids = [int(pid) for pid in product_ids.split(',') if pid]
+    return render(request, 'shop/compare.html', locals())
 
-    # Получение объектов продуктов из базы данных
-    products = Product.objects.filter(id__in=product_ids)
 
-    # Получение характеристик для каждого продукта
-    characteristics = {product.id: product.get_characteristics() for product in products}
 
-    return render(request, 'compare.html', locals())
+@require_http_methods(["POST"])
+def compare_products(request):
+    try:
+        data = json.loads(request.body)
+        product_id = data.get('product_id')
+        action = data.get('action')
+
+        if not product_id or not action:
+            return JsonResponse({'status': 'error', 'message': 'Отсутствуют обязательные параметры'}, status=400)
+
+        compare_list = request.session.get('compare_list', [])
+
+        if action == 'add':
+            if product_id not in compare_list:
+                compare_list.append(product_id)
+            message = 'Товар успешно добавлен'
+        elif action == 'remove':
+            if product_id in compare_list:
+                compare_list.remove(product_id)
+            message = 'Товар успешно удален'
+
+        request.session['compare_list'] = compare_list
+        return JsonResponse({'status': 'success', 'message': message})
+
+    except json.JSONDecodeError:
+        return JsonResponse({'status': 'error', 'message': 'Неверный формат данных'}, status=400)

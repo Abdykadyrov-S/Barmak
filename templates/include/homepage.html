@@ -68,7 +68,7 @@
                      $('ul.liveSearchResults').append('<li>Результатов нет</li>');
                   } else {// Очищаем и показываем список результатов
                      data.forEach(function (item) {
-                        $('ul.liveSearchResults').append('<li><img src="/media/'+ item.image +'" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
+                        $('ul.liveSearchResults').append('<li><img src="/media/' + item.image + '" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
                      });
                   }
                   $('ul.liveSearchResults').addClass('visible');
@@ -97,7 +97,7 @@
                      $('ul.liveSearchResults').append('<li>Результатов нет</li>');
                   } else {// Очищаем и показываем список результатов
                      data.forEach(function (item) {
-                        $('ul.liveSearchResults').append('<li><img src="/media/'+ item.image +'" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
+                        $('ul.liveSearchResults').append('<li><img src="/media/' + item.image + '" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
                      });
                   }
                   $('ul.liveSearchResults').addClass('visible');
@@ -131,7 +131,7 @@
                      $('ul.liveSearchResults').append('<li>Результатов нет</li>');
                   } else {// Очищаем и показываем список результатов
                      data.forEach(function (item) {
-                        $('ul.liveSearchResults').append('<li><img src="/media/'+ item.image +'" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
+                        $('ul.liveSearchResults').append('<li><img src="/media/' + item.image + '" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
                      });
                   }
                   $('ul.liveSearchResults').addClass('visible');
@@ -160,7 +160,7 @@
                      $('ul.liveSearchResults').append('<li>Результатов нет</li>');
                   } else {// Очищаем и показываем список результатов
                      data.forEach(function (item) {
-                        $('ul.liveSearchResults').append('<li><img src="/media/'+ item.image +'" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
+                        $('ul.liveSearchResults').append('<li><img src="/media/' + item.image + '" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
                      });
                   }
                   $('ul.liveSearchResults').addClass('visible');
@@ -181,6 +181,53 @@
             $('ul.liveSearchResults').hide();
          }
       });
+
+      // Список сравнения
+      $('.tp-product-compare-btn').click(function () {
+         const productId = $(this).data('product-id');
+         $.ajax({
+            url: "{% url 'comparison' %}",
+            type: 'POST',
+            data: JSON.stringify({
+               product_id: productId,
+               action: 'add'
+            }),
+            contentType: 'application/json',
+            headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+            success: function (response) {
+               alert('Товар добавлен в список сравнения');
+            },
+            error: function () {
+               alert('Ошибка при добавлении товара');
+            }
+         });
+      });
+
+      $('.remove-compare').click(function () {
+         const productId = $(this).data('product-id');
+         $.ajax({
+            url: "{% url 'comparison' %}",
+            type: 'POST',
+            data: JSON.stringify({
+               'product_id': productId,
+               'action': 'remove'
+            }),
+            contentType: 'application/json',
+            headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+            success: function (response) {
+               if (response.status === 'success') {
+                  $('.td-' + productId).remove();
+                  alert('Товар удален из списка сравнения');
+               } else {
+                  alert(response.message);
+               }
+            },
+            error: function () {
+               alert('Ошибка при удалении товара');
+            }
+         });
+      });
+
    </script>
 </body>
 

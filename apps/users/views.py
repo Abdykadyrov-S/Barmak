@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
-
+from django.http import Http404
 from apps.settings.models import Settings
 from apps.users.models import User
 from apps.products.models import Category
+from django.contrib.auth.decorators import login_required
+
+
+
+
 
 # Create your views here.
 def register(request):
@@ -56,8 +61,11 @@ def user_login(request):
     return render(request, 'users/login.html', context)
 
 
-
+@login_required
 def profile(request, username):
+    if request.user.username != username:
+        raise Http404("Нет доступа к данному профилю")
+    
     user = User.objects.get(username = username)
     settings = Settings.objects.latest('id')
 

@@ -41,11 +41,11 @@ def contact(request):
         Contact.objects.create(name=name, phone=phone, message=message, cause=cause)
 
         get_text(f""" Оставлен отзыв 
-Имя пользователя: {name}
-Номер телефона: {phone}
-Причина: {cause}
-Сообщение: {message}
-""")
+                Имя пользователя: {name}
+                Номер телефона: {phone}
+                Причина: {cause}
+                Сообщение: {message}
+                """)
         return redirect('index')
 
     return render(request, "base/contact.html", locals())

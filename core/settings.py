@@ -31,6 +31,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+# settings.py
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# settings.py
+SOCIALACCOUNT_ADAPTER = 'apps.users.adapters.CustomSocialAccountAdapter'
+
+
 
 # Application definition
 
