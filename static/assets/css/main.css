@@ -19946,8 +19946,8 @@ product all slider
   border: 1px solid rgba(1, 15, 28, 0.1);
   padding: 15px 25px;
 }
-.tp-compare-table td {
-  max-width: 200px;
+.tp-compare-table td table{
+  max-width: 300px;
 }
 
 .compare-inner-table{
@@ -19974,6 +19974,11 @@ product all slider
   line-height: 1.3;
   font-size: 15px;
 }
+
+.tp-compare-desc table {
+  width: 100%;
+}
+
 .tp-compare-rating {
   display: -webkit-box;
   display: -moz-box;
@@ -20042,6 +20047,10 @@ product all slider
 @media (max-width: 575px) {
   .tp-collection-height {
     min-height: 400px;
+  }
+
+  .tp-compare-table td {
+    max-width: 100%;
   }
 }
 .tp-collection-thumb {
