@@ -1,18 +1,15 @@
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
-from allauth.account.utils import perform_login
-from allauth.socialaccount.helpers import complete_social_login
-from allauth.exceptions import ImmediateHttpResponse
-from django.shortcuts import redirect
 
-class CustomSocialAccountAdapter(DefaultSocialAccountAdapter):
+class NoSocialAccountConfirmationAdapter(DefaultSocialAccountAdapter):
     def pre_social_login(self, request, sociallogin):
-        # Если пользователь уже существует, завершаем процесс входа
-        if sociallogin.is_existing:
-            perform_login(request, sociallogin.user, 'none')
-            raise ImmediateHttpResponse(redirect('redirect_url_name'))
-        # Если пользователь новый, создаем учетную запись и завершаем процесс входа
-        user = sociallogin.user
-        user.set_unusable_password()
-        sociallogin.save(request)
-        complete_social_login(request, sociallogin)
-        raise ImmediateHttpResponse(redirect('redirect_url_name'))
+        """
+        This method can be overridden to perform extra checks, for example
+        to see if the social account has been banned. In case of a ban,
+        you can raise an ImmediateHttpResponse to abort the login.
+
+        This example bypasses the signup form that typically asks for
+        extra information (like user type).
+        """
+        # Skip the account signup form.
+        if not sociallogin.is_existing:
+            sociallogin.save(request, connect=True)

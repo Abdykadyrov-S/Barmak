@@ -31,14 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-# settings.py
 SOCIALACCOUNT_AUTO_SIGNUP = True
-SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
-
-# settings.py
-SOCIALACCOUNT_ADAPTER = 'apps.users.adapters.CustomSocialAccountAdapter'
-
-
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 
 # Application definition
 
@@ -99,6 +93,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+SOCIALACCOUNT_ADAPTER = 'apps.users.adapters.NoSocialAccountConfirmationAdapter'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
