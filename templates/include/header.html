@@ -155,8 +155,11 @@
                         {% if settings.instagram %}
                         <a href="{{settings.instagram}}"><i class="fa-brands fa-instagram"></i></a>
                         {% endif %}
-                        {% if settings.twitter %}
-                        <a href="{{settings.twitter}}"><i class="fa-brands fa-twitter"></i></a>
+                        {% if settings.telegram %}
+                        <a href="{{settings.telegram}}"><i class="fab fa-telegram"></i></a>
+                        {% endif %}
+                        {% if settings.phone %}
+                        <a href="https://wa.me/{{settings.phone}}/?text=Здравствуйте, "><i class="fab fa-whatsapp"></i></a>
                         {% endif %}
                         </a>
                      </div>
@@ -185,8 +188,8 @@
                   <div class="tp-header-top-right tp-header-top-black d-flex align-items-center justify-content-end">
                      <div class="tp-header-top-menu d-flex align-items-center justify-content-end">
                         <div class="tp-header-top-menu-item tp-header-setting">
-                           <span class="tp-header-setting-toggle" id="tp-header-setting-toggle">Настройки</span>
                            {% if user.is_authenticated %}
+                           <span class="tp-header-setting-toggle" id="tp-header-setting-toggle">Настройки аккаунта</span>
                            <ul>
                               <li>
                                  <a href="{% url 'profile' user.username %}">Профиль</a>
@@ -196,14 +199,8 @@
                               </li>
                            </ul>
                            {% else %}
-                           <ul>
-                              <li>
-                                 <a href="{% url 'login' %}">Войти</a>
-                              </li>
-                              <li>
-                                 <a href="{% url 'register' %}">Создать аккаунт</a>
-                              </li>
-                           </ul>
+                           <a href="{% url 'login' %}"><b>Войти | </b></a>
+                           <a href="{% url 'register' %}"><b> Создать аккаунт</b></a>
                            {% endif %}
                         </div>
                      </div>

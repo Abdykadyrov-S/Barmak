@@ -285,6 +285,36 @@
      <!-- profile area end -->
 
       </main>
+      <!-- Ваш текущий HTML-код -->
+
+<!-- Добавьте следующий скрипт для Ajax -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#profileForm").submit(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'profile' user.username %}",
+                data: $(this).serialize(),
+                success: function (response) {
+                    // Обработка успешного ответа
+                    console.log(response);
+                    // Дополнительные действия, если необходимо
+                },
+                error: function (error) {
+                    // Обработка ошибки
+                    console.log(error);
+                    // Дополнительные действия, если необходимо
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
+
       
 
 {% include 'include/footer.html' %}
