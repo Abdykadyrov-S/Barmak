@@ -18482,6 +18482,21 @@ product all slider
   color: var(--tp-common-black);
   background-color: #F5F5F5;
   padding: 2px 21px;
+  border-radius: 5px;
+}
+.tp-shop-widget-result-btn{
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--tp-common-black);
+  background-color: #F5F5F5;
+  padding: 2px 21px;
+  border-radius: 5px;
+  margin:20px 0 0 auto;
+  display: block;
+}
+.tp-shop-widget-result-btn:hover{
+  color: var(--tp-common-white);
+  background-color: var(--tp-common-black);
 }
 .tp-shop-widget-filter-info .tp-shop-widget-filter-btn:hover {
   color: var(--tp-common-white);

@@ -67,9 +67,11 @@ def product_detail(request, id):
 
 
 def product_list(request):
+    title_page = "Сортировка товаров"
     settings = Settings.objects.latest('id')
     brands = Brand.objects.all().order_by("?")
     all_products = Product.objects.all()
+    footer_categories = Category.objects.all().order_by('?')
 
     print(request.GET.get('min_price'))
     min_price_param = request.GET.get('min_price')
