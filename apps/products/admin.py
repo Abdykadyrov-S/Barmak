@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Category, Product, Characteristic, ReviewProduct
+from .models import Category, Product, Characteristic, ReviewProduct, Brand
 
 admin.site.register(ReviewProduct)
+admin.site.register(Brand)
 
 class CharacteristicInline(admin.TabularInline):
     model = Characteristic

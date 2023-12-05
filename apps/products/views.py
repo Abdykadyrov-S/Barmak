@@ -5,7 +5,7 @@ from django.views.decorators.http import require_http_methods
 from django.db.models import Q
 
 from apps.settings.models import Settings, About
-from .models import Product, Category, ReviewProduct
+from .models import Product, Category, ReviewProduct, Brand
 
 import json
 
@@ -24,12 +24,22 @@ def category_detail(request, slug):
     settings = Settings.objects.latest('id')
     category = Category.objects.get(slug=slug)
     products = Product.objects.filter(category=category)
+    brands = Brand.objects.all().order_by("?")
     footer_categories = Category.objects.all().order_by('?')
     return render(request, 'shop/category-details.html', locals())
 
+def brand(request, slug):
+    title_page = "Бренд"
+    settings = Settings.objects.latest('id')
+    brand = Brand.objects.get(slug=slug)
+    products = Product.objects.filter(brand=brand)
+    brands = Brand.objects.all().order_by("?")
+    footer_categories = Category.objects.all().order_by('?')
+    return render(request, 'shop/brand.html', locals())
 
 def products(request):
     title_page = "Товары"
+    brands = Brand.objects.all().order_by("?")
     categories = Category.objects.all()
     settings = Settings.objects.latest('id')
     all_products = Product.objects.all().order_by('?')
@@ -58,14 +68,36 @@ def product_detail(request, id):
 
 def product_list(request):
     settings = Settings.objects.latest('id')
-    # all_products = Product.objects.all()
+    brands = Brand.objects.all().order_by("?")
+    all_products = Product.objects.all()
+
     print(request.GET.get('min_price'))
-    user_prices = request.GET.get('min_price').replace(" ", "").split("-")
-    print(user_prices)
-    min_price = int(user_prices[0])
-    max_price = int(user_prices[1])
-    all_products = Product.objects.filter(price__range=(min_price, max_price))
-    print(all_products)
+    min_price_param = request.GET.get('min_price')
+    if min_price_param is not None:
+        try:
+            print(request.GET.get('min_price'))
+            user_prices = request.GET.get('min_price').replace(" ", "").split("-")
+            print(user_prices)
+            min_price = int(user_prices[0])
+            max_price = int(user_prices[1])
+            all_products = Product.objects.filter(price__range=(min_price, max_price))
+            print(all_products)
+        except (ValueError, IndexError):
+            pass
+
+    popular = request.GET.get('popular', False)
+    product_day = request.GET.get('product_day', False)
+    new = request.GET.get('new', False)
+    featured = request.GET.get('featured', False)
+
+    if popular:
+        all_products = all_products.filter(popular=True)
+    if product_day:
+        all_products = all_products.filter(product_day=True)
+    if new:
+        all_products = all_products.filter(new=True)
+    if featured:
+        all_products = all_products.filter(featured=True)
 
     return render(request, 'shop/all_products.html', locals())
 

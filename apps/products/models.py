@@ -23,11 +23,37 @@ class Category(models.Model):
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
 
+class Brand(models.Model):
+    title = models.CharField(
+        max_length=255,
+        verbose_name="Название бренда"
+    )
+    slug = models.SlugField(
+        verbose_name="Slug"
+    )
+    image = models.ImageField(
+        max_length=1000,
+        upload_to='brand/',
+        verbose_name="Фотография категории",
+        default='no_image.jpg'
+    )
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Бренд продукта"
+        verbose_name_plural = "Бренды продуктов"
+
 class Product(models.Model):
     category = models.ManyToManyField(
         Category,
         related_name="category_products",
         verbose_name="Категории"
+    )
+    brand = models.ForeignKey(
+        Brand, on_delete=models.SET_NULL,
+        related_name="brand_products",
+        blank=True, null=True
     )
     title = models.CharField(
         max_length=300,

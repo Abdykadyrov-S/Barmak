@@ -37,6 +37,7 @@
 
             <div class="tp-shop-widget-content">
                <div class="tp-shop-widget-checkbox">
+                  <form id="price-filter-form" method="get" action="{% url 'product_list' %}">
                   <ul class="filter-items filter-checkbox">
                      <li class="filter-item checkbox">
                         <input name="popular" id="popular" type="checkbox">
@@ -52,8 +53,12 @@
                      </li>
                      <li class="filter-item checkbox">
                         <input name="featured" id="featured" type="checkbox">
-                        <label for="featured">Рекомендуемые</label>
-                  </ul><!-- .filter-items -->
+                        <label for="featured">Рекомендуемые</label></li>
+                     </ul><!-- .filter-items -->
+
+                     <button class="tp-shop-widget-filter-btn" type="submit">Посмотреть результат</button>
+                  
+                  </form>
                </div>
             </div>
          </div>
@@ -68,6 +73,34 @@
                      <li><a href="{% url 'category_detail' category.slug %}">{{category.title}}</a></li>
                      {% endfor %}
                   </ul>
+               </div>
+            </div>
+         </div>
+         <!-- brands -->
+         <div class="tp-shop-widget mb-50">
+            <h3 class="tp-shop-widget-title">Популярные бренды</h3>
+
+            <div class="tp-shop-widget-content">
+               <div class="tp-shop-widget-product">
+                  {% for brand in brands %}
+                  <div class="tp-shop-widget-product-item d-flex align-items-center">
+                     <div class="tp-shop-widget-product-thumb">
+                        <a href="{% url 'brand' brand.slug %}">
+                           <img src="{{brand.image.url}}" alt="">
+                        </a>
+                     </div>
+                     <div class="tp-shop-widget-product-content">
+                        <h4 class="tp-shop-widget-product-title">
+                           <a href="{% url 'brand' brand.slug %}">{{brand.title}}</a>
+                        </h4>
+                        <div class="tp-shop-widget-product-price-wrapper">
+                           <span class="tp-shop-widget-product-price">{{brand.brand_products.all.count}} продуктов</span>
+                        </div>
+                     </div>
+                  </div>
+                  {% endfor %}
+
+                  
                </div>
             </div>
          </div>

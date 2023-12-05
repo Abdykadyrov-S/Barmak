@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 {% include 'include/header.html' %}
-
+<!-- Test -->
 <!-- filter offcanvas area start -->
 <div class="tp-filter-offcanvas-area tp-filter-offcanvas-right">
    <div class="tp-filter-offcanvas-wrapper">
@@ -112,10 +112,10 @@
          <div class="row">
             <div class="col-xxl-12">
                <div class="breadcrumb__content p-relative z-index-1">
-                  <h3 class="breadcrumb__title">{{category.title}}</h3>
+                  <h3 class="breadcrumb__title">Все продукты бренда {{brand.title}}</h3>
                   <div class="breadcrumb__list">
-                     <span><a href="{% url 'index' %}">Главная страница</a></span>
-                     <span>{{category.title}}</span>
+                     <span><a href="/">Главная</a></span>
+                     <span>{{brand.title}}</span>
                   </div>
                </div>
             </div>
@@ -214,114 +214,114 @@
                      </div>
                   </div>
                   <div class="tp-shop-items-wrapper tp-shop-item-primary">
-                     <div class="tab-content" id="productTabContent">
-                        <div class="tab-pane fade show active" id="grid-tab-pane" role="tabpanel"
-                           aria-labelledby="grid-tab" tabindex="0">
-                           <div class="row">
-                              {% for product in products %}
-                              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                                 <div class="tp-product-item-2 mb-40">
-                                    <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
-                                       <a href="{% url 'product_detail' product.id %}">
-                                          <img src="{{ product.image.url}}" alt="">
-                                       </a>
-                                    </div>
-                                    <div class="tp-product-content-2 pt-15">
-                                       <div class="tp-product-tag-2">
-                                          <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
-                                       </div>
-                                       
-                                       <div class="tp-product-rating-icon tp-product-rating-icon-2">
-                                          <span><i class="fa-solid fa-star"></i></span>
-                                          <span><i class="fa-solid fa-star"></i></span>
-                                          <span><i class="fa-solid fa-star"></i></span>
-                                          <span><i class="fa-solid fa-star"></i></span>
-                                          <span><i class="fa-solid fa-star"></i></span>
-                                       </div>
-                                       <div class="tp-product-price-wrapper-2">
-                                          {% if product.old_price %}
-                                          <span class="tp-product-price old-price">{{product.old_price}}</span>
-                                          {% endif %}
-                                          <span class="tp-product-price-2 new-price">{{product.price}} сом</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              {% endfor %}
-                           </div>
-                        </div>
-                        <div class="tab-pane fade" id="list-tab-pane" role="tabpanel" aria-labelledby="list-tab"
-                           tabindex="0">
-                           <div class="tp-shop-list-wrapper tp-shop-item-primary mb-70">
-                              <div class="row">
-                                 <div class="col-xl-12">
-                                    {% for product in products %}
-                                    <div class="tp-product-list-item d-md-flex">
-                                       <div class="tp-product-list-thumb p-relative fix">
-                                          <a href="{% url 'product_detail' product.id %}">
-                                             <img src="{{ product.image.url}}" style="width: 300px; height: 250px;"
-                                                alt="">
-                                          </a>
+                    <div class="tab-content" id="productTabContent">
+                       <div class="tab-pane fade show active" id="grid-tab-pane" role="tabpanel"
+                          aria-labelledby="grid-tab" tabindex="0">
+                          <div class="row">
+                             {% for product in products %}
+                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                                <div class="tp-product-item-2 mb-40">
+                                   <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img">
+                                      <a href="{% url 'product_detail' product.id %}">
+                                         <img src="{{ product.image.url}}" alt="">
+                                      </a>
+                                   </div>
+                                   <div class="tp-product-content-2 pt-15">
+                                      <div class="tp-product-tag-2">
+                                         <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
+                                      </div>
+                                      
+                                      <div class="tp-product-rating-icon tp-product-rating-icon-2">
+                                         <span><i class="fa-solid fa-star"></i></span>
+                                         <span><i class="fa-solid fa-star"></i></span>
+                                         <span><i class="fa-solid fa-star"></i></span>
+                                         <span><i class="fa-solid fa-star"></i></span>
+                                         <span><i class="fa-solid fa-star"></i></span>
+                                      </div>
+                                      <div class="tp-product-price-wrapper-2">
+                                         {% if product.old_price %}
+                                         <span class="tp-product-price old-price">{{product.old_price}}</span>
+                                         {% endif %}
+                                         <span class="tp-product-price-2 new-price">{{product.price}} сом</span>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                             {% endfor %}
+                          </div>
+                       </div>
+                       <div class="tab-pane fade" id="list-tab-pane" role="tabpanel" aria-labelledby="list-tab"
+                          tabindex="0">
+                          <div class="tp-shop-list-wrapper tp-shop-item-primary mb-70">
+                             <div class="row">
+                                <div class="col-xl-12">
+                                   {% for product in products %}
+                                   <div class="tp-product-list-item d-md-flex">
+                                      <div class="tp-product-list-thumb p-relative fix">
+                                         <a href="{% url 'product_detail' product.id %}">
+                                            <img src="{{ product.image.url}}" style="width: 300px; height: 250px;"
+                                               alt="">
+                                         </a>
 
-                                       </div>
-                                       <div class="tp-product-list-content">
-                                          <div class="tp-product-content-2 pt-15">
-                                             <h3 class="tp-product-title-2">
-                                                <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
-                                             </h3>
-                                             <div class="tp-product-rating-icon tp-product-rating-icon-2">
-                                                <span><i class="fa-solid fa-star"></i></span>
-                                                <span><i class="fa-solid fa-star"></i></span>
-                                                <span><i class="fa-solid fa-star"></i></span>
-                                                <span><i class="fa-solid fa-star"></i></span>
-                                                <span><i class="fa-solid fa-star"></i></span>
-                                             </div>
-                                             <div class="tp-product-price-wrapper-2">
-                                                {% if product.old_price %}
-                                                <span class="tp-product-price old-price">{{product.old_price}}</span>
-                                                {% endif %}
-                                                <span class="tp-product-price-2 new-price">{{product.price}} сом</span>
-                                             </div>
-                                             <p>{{ product.description | truncatewords:10 }}</p>
-                                             <div class="tp-product-list-add-to-cart">
-                                                <button type="button"
-                                                   class="tp-product-action-btn tp-product-compare-btn"
-                                                   data-product-id="{{ product.id }}">
-                                                   <svg width="17" height="21" viewBox="0 0 17 21" fill="none"
-                                                      xmlns="http://www.w3.org/2000/svg">
-                                                      <path d="M12.6666 1L16 4.33333L12.6666 7.66667"
-                                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                         stroke-linejoin="round" />
-                                                      <path
-                                                         d="M1 9.3335V7.66683C1 6.78277 1.35119 5.93493 1.97631 5.30981C2.60143 4.68469 3.44928 4.3335 4.33333 4.3335H16"
-                                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                         stroke-linejoin="round" />
-                                                      <path d="M4.33333 19.3332L1 15.9998L4.33333 12.6665"
-                                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                         stroke-linejoin="round" />
-                                                      <path
-                                                         d="M16 11V12.6667C16 13.5507 15.6488 14.3986 15.0237 15.0237C14.3986 15.6488 13.5507 16 12.6667 16H1"
-                                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                         stroke-linejoin="round" />
-                                                   </svg>
+                                      </div>
+                                      <div class="tp-product-list-content">
+                                         <div class="tp-product-content-2 pt-15">
+                                            <h3 class="tp-product-title-2">
+                                               <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
+                                            </h3>
+                                            <div class="tp-product-rating-icon tp-product-rating-icon-2">
+                                               <span><i class="fa-solid fa-star"></i></span>
+                                               <span><i class="fa-solid fa-star"></i></span>
+                                               <span><i class="fa-solid fa-star"></i></span>
+                                               <span><i class="fa-solid fa-star"></i></span>
+                                               <span><i class="fa-solid fa-star"></i></span>
+                                            </div>
+                                            <div class="tp-product-price-wrapper-2">
+                                               {% if product.old_price %}
+                                               <span class="tp-product-price old-price">{{product.old_price}}</span>
+                                               {% endif %}
+                                               <span class="tp-product-price-2 new-price">{{product.price}} сом</span>
+                                            </div>
+                                            <p>{{ product.description | truncatewords:10 }}</p>
+                                            <div class="tp-product-list-add-to-cart">
+                                               <button type="button"
+                                                  class="tp-product-action-btn tp-product-compare-btn"
+                                                  data-product-id="{{ product.id }}">
+                                                  <svg width="17" height="21" viewBox="0 0 17 21" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                     <path d="M12.6666 1L16 4.33333L12.6666 7.66667"
+                                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                     <path
+                                                        d="M1 9.3335V7.66683C1 6.78277 1.35119 5.93493 1.97631 5.30981C2.60143 4.68469 3.44928 4.3335 4.33333 4.3335H16"
+                                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                     <path d="M4.33333 19.3332L1 15.9998L4.33333 12.6665"
+                                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                     <path
+                                                        d="M16 11V12.6667C16 13.5507 15.6488 14.3986 15.0237 15.0237C14.3986 15.6488 13.5507 16 12.6667 16H1"
+                                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                  </svg>
 
-                                                   <span class="tp-product-tooltip">Добавить в список
-                                                      сравнения</span>
-                                                </button>
+                                                  <span class="tp-product-tooltip">Добавить в список
+                                                     сравнения</span>
+                                               </button>
 
-                                                <button class="tp-product-list-add-to-cart-btn"><a
-                                                      href="{% url 'product_detail' product.id %}">Подробнее</a></button>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    {% endfor %}
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                                               <button class="tp-product-list-add-to-cart-btn"><a
+                                                     href="{% url 'product_detail' product.id %}">Подробнее</a></button>
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </div>
+                                   {% endfor %}
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
                </div>
             </div>
          </div>
