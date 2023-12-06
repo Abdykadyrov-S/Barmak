@@ -121,11 +121,11 @@ def profile(request, username):
                         user.save()
                         return redirect('profile', user.username)
                     else:
-                        return redirect('current_password_error')
+                        return redirect('profile', user.username)
                 except:
-                    return redirect('user_not_found')
+                    return redirect('profile', user.username)
             else:
-                return redirect('passwords_are_different')
+                return redirect('profile', user.username)
            
     return render(request, 'users/profile.html', locals())
 
