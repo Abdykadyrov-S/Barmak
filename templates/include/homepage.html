@@ -30,6 +30,7 @@
 
    {% endblock %}
 
+
    <!-- JS here -->
    <script src="{% static 'assets/js/vendor/jquery.js' %}"></script>
    <script src="{% static 'assets/js/vendor/waypoints.js' %}"></script>
@@ -47,6 +48,7 @@
    <script src="{% static 'assets/js/imagesloaded-pkgd.js' %}"></script>
    <script src="{% static 'assets/js/ajax-form.js' %}"></script>
    <script src="{% static 'assets/js/main.js' %}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
 
       //for search
@@ -189,44 +191,66 @@
             url: "{% url 'comparison' %}",
             type: 'POST',
             data: JSON.stringify({
-               product_id: productId,
-               action: 'add'
+                  product_id: productId,
+                  action: 'add'
             }),
             contentType: 'application/json',
             headers: { 'X-CSRFToken': '{{ csrf_token }}' },
             success: function (response) {
-               alert('Товар добавлен в список сравнения');
+                  Swal.fire(
+                     'Добавлено!',
+                     'Товар добавлен в список сравнения',
+                     'success'
+                  );
             },
             error: function () {
-               alert('Ошибка при добавлении товара');
+                  Swal.fire(
+                     'Ошибка',
+                     'Ошибка при добавлении товара',
+                     'error'
+                  );
             }
          });
       });
 
+
       $('.remove-compare').click(function () {
-         const productId = $(this).data('product-id');
+       const productId = $(this).data('product-id');
          $.ajax({
             url: "{% url 'comparison' %}",
             type: 'POST',
             data: JSON.stringify({
-               'product_id': productId,
-               'action': 'remove'
+                  'product_id': productId,
+                  'action': 'remove'
             }),
             contentType: 'application/json',
             headers: { 'X-CSRFToken': '{{ csrf_token }}' },
             success: function (response) {
-               if (response.status === 'success') {
-                  $('.td-' + productId).remove();
-                  alert('Товар удален из списка сравнения');
-               } else {
-                  alert(response.message);
-               }
+                  if (response.status === 'success') {
+                     $('.td-' + productId).remove();
+                     Swal.fire(
+                        'Удалено!',
+                        'Товар удален из списка сравнения',
+                        'success'
+                     );
+                  } else {
+                     Swal.fire(
+                        'Ошибка',
+                        response.message,
+                        'error'
+                     );
+                  }
             },
             error: function () {
-               alert('Ошибка при удалении товара');
+                  Swal.fire(
+                     'Ошибка',
+                     'Ошибка при удалении товара',
+                     'error'
+                  );
             }
          });
       });
+
 
    </script>
 </body>

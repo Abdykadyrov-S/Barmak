@@ -223,7 +223,7 @@
                                           </div>
                                           <div class="col-xxl-12">
                                              <div class="profile__btn">
-                                                <button type="submit" class="tp-btn">Обновить профиль</button>
+                                                <button type="submit" class="tp-btn" name="update">Обновить профиль</button>
                                              </div>
                                           </div>
                                        </div>
@@ -268,7 +268,7 @@
                                        </div>
                                        <div class="col-xxl-6 col-md-6">
                                           <div class="profile__btn">
-                                             <button type="submit" class="tp-btn">Обновить пароль</button>
+                                             <button type="submit" class="tp-btn" name="update_password">Обновить пароль</button>
                                           </div>
                                        </div>
                                     </div>
@@ -285,6 +285,36 @@
      <!-- profile area end -->
 
       </main>
+      <!-- Ваш текущий HTML-код -->
+
+<!-- Добавьте следующий скрипт для Ajax -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#profileForm").submit(function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'profile' user.username %}",
+                data: $(this).serialize(),
+                success: function (response) {
+                    // Обработка успешного ответа
+                    console.log(response);
+                    // Дополнительные действия, если необходимо
+                },
+                error: function (error) {
+                    // Обработка ошибки
+                    console.log(error);
+                    // Дополнительные действия, если необходимо
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
+
       
 
 {% include 'include/footer.html' %}

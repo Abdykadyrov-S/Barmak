@@ -7,21 +7,35 @@ class Category(models.Model):
         max_length=255,
         verbose_name="Название"
     )
+    
     slug = models.SlugField(
         verbose_name="Slug"
     )
+
     image = models.ImageField(
         max_length=1000,
         upload_to='category/',
         verbose_name="Фотография категории",
         default='no_image.jpg'
     )
+
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='subcategories')
+
     def __str__(self):
         return self.title
+    
+    # Вспомогательные методы
+    def is_parent(self):
+        return self.parent is None
+
+    @property
+    def get_children(self):
+        return Category.objects.filter(parent=self)
     
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
+
 
 class Product(models.Model):
     category = models.ManyToManyField(

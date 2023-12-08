@@ -10,10 +10,9 @@ from .models import Product, Category, ReviewProduct
 import json
 
 # Create your views here.
-
 def category(request):
     title_page = "Категории"
-    categories = Category.objects.all().order_by("?")
+    categories = Category.objects.filter(parent=None).order_by("?")
     settings = Settings.objects.latest('id')
     footer_categories = Category.objects.all().order_by('?')
     return render(request, 'shop/shop-category.html', locals())
@@ -26,6 +25,7 @@ def category_detail(request, slug):
     products = Product.objects.filter(category=category)
     footer_categories = Category.objects.all().order_by('?')
     return render(request, 'shop/category-details.html', locals())
+
 
 
 def products(request):
@@ -57,15 +57,38 @@ def product_detail(request, id):
 
 
 def product_list(request):
+    title_page = "Сортировка товаров"
     settings = Settings.objects.latest('id')
-    # all_products = Product.objects.all()
+    all_products = Product.objects.all()
+    footer_categories = Category.objects.all().order_by('?')
+
     print(request.GET.get('min_price'))
-    user_prices = request.GET.get('min_price').replace(" ", "").split("-")
-    print(user_prices)
-    min_price = int(user_prices[0])
-    max_price = int(user_prices[1])
-    all_products = Product.objects.filter(price__range=(min_price, max_price))
-    print(all_products)
+    min_price_param = request.GET.get('min_price')
+    if min_price_param is not None:
+        try:
+            print(request.GET.get('min_price'))
+            user_prices = request.GET.get('min_price').replace(" ", "").split("-")
+            print(user_prices)
+            min_price = int(user_prices[0])
+            max_price = int(user_prices[1])
+            all_products = Product.objects.filter(price__range=(min_price, max_price))
+            print(all_products)
+        except (ValueError, IndexError):
+            pass
+
+    popular = request.GET.get('popular', False)
+    product_day = request.GET.get('product_day', False)
+    new = request.GET.get('new', False)
+    featured = request.GET.get('featured', False)
+
+    if popular:
+        all_products = all_products.filter(popular=True)
+    if product_day:
+        all_products = all_products.filter(product_day=True)
+    if new:
+        all_products = all_products.filter(new=True)
+    if featured:
+        all_products = all_products.filter(featured=True)
 
     return render(request, 'shop/all_products.html', locals())
 

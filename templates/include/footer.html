@@ -20,8 +20,11 @@
                                 {% if settings.facebook %}
                                 <a href="{{settings.facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
                                 {% endif %}
-                                {% if settings.twitter %}
-                                <a href="{{settings.twitter}}"><i class="fa-brands fa-twitter"></i></a>
+                                {% if settings.telegram %}
+                                <a href="{{settings.telegram}}"><i class="fab fa-telegram"></i></a>
+                                {% endif %}
+                                {% if settings.phone %}
+                                <a href="https://wa.me/{{settings.phone}}/?text=Здравствуйте, "><i class="fab fa-whatsapp"></i></a>
                                 {% endif %}
                                 {% if settings.instagram %}
                                 <a href="{{settings.instagram}}"><i class="fa-brands fa-instagram"></i></a>
