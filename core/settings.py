@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
 
     # Register
+    #django-allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -70,7 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -158,11 +159,6 @@ AUTH_USER_MODEL = 'users.User'
 
 # Google
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend'
-]
-
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
@@ -172,10 +168,25 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {
             'access_type': 'online',
         }
+    },
+    'telegram': {
+        'APP': {
+            'client_id': '6896243913',
+            'secret': "6896243913:AAGp1chpbyeYVaoUodrG3ZC3sXL-X1vEUFg",
+        },
+        'AUTH_PARAMS': {'auth_date_validity': 30},
     }
 }
 
-SITE_ID = 2
+SITE_ID = 1
 
+LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = '/'
+
+# Additional configuration settings
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET= True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_LOGIN_ON_GET=True

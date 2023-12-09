@@ -10,6 +10,13 @@ from .models import Product, Category, ReviewProduct
 import json
 
 # Create your views here.
+# def category(request):
+#     title_page = "Категории"
+#     categories = Category.objects.filter(parent=None).order_by("?")
+#     settings = Settings.objects.latest('id')
+#     footer_categories = Category.objects.all().order_by('?')
+#     return render(request, 'shop/shop-category.html', locals())
+
 def category(request):
     title_page = "Категории"
     categories = Category.objects.filter(parent=None).order_by("?")
@@ -17,6 +24,17 @@ def category(request):
     footer_categories = Category.objects.all().order_by('?')
     return render(request, 'shop/shop-category.html', locals())
 
+def sub_category(request):
+    title_page = "Под Категории"
+    parent_slug = request.GET.get('parent_slug')  # Получаем значение parent_slug из запроса
+    if parent_slug:
+        parent_category = get_object_or_404(Category, slug=parent_slug)
+        subcategories = parent_category.subcategories.all()
+    else:
+        subcategories = Category.objects.filter(parent=None)
+    settings = Settings.objects.latest('id')
+    footer_categories = Category.objects.all().order_by('?')
+    return render(request, 'shop/sub-category.html', locals())
 
 def category_detail(request, slug):
     title_page = "категория"
