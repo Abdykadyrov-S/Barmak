@@ -1,10 +1,14 @@
 from django.contrib import admin
-from .models import Category, Product, Characteristic, ReviewProduct
+from .models import Category, Product, Characteristic, ReviewProduct, ImagesProduct
 
 admin.site.register(ReviewProduct)
 
 class CharacteristicInline(admin.TabularInline):
     model = Characteristic
+    extra = 1
+
+class ImagesProductInline(admin.TabularInline):
+    model = ImagesProduct
     extra = 1
 
 class CategoryInline(admin.TabularInline):
@@ -18,7 +22,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'price', 'created', 'display_categories')
     list_filter = ('category', 'created')
     search_fields = ('title', 'category__title')
-    inlines = [CategoryInline, CharacteristicInline]
+    inlines = [CategoryInline, ImagesProductInline, CharacteristicInline]
     exclude = ('category',)
     
 

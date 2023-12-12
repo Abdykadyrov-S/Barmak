@@ -40,15 +40,11 @@
                                  <button class="nav-link active" id="nav-1-tab" data-bs-toggle="tab" data-bs-target="#nav-1" type="button" role="tab" aria-controls="nav-1" aria-selected="true">
                                     <img src="{{product.image.url}}" alt="">
                                  </button>
-                                 <button class="nav-link" id="nav-2-tab" data-bs-toggle="tab" data-bs-target="#nav-2" type="button" role="tab" aria-controls="nav-2" aria-selected="false">
-                                    <img src="{{product.image_2.url}}" alt="">
+                                 {% for image in product.images_product.all %}
+                                 <button class="nav-link" id="nav-{{ forloop.counter|add:1 }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ forloop.counter|add:1 }}" type="button" role="tab" aria-controls="nav-{{ forloop.counter|add:1 }}" aria-selected="false">
+                                    <img src="{{image.image_2.url}}" alt="">
                                  </button>
-                                 <button class="nav-link" id="nav-3-tab" data-bs-toggle="tab" data-bs-target="#nav-3" type="button" role="tab" aria-controls="nav-3" aria-selected="false">
-                                    <img src="{{product.image_3.url}}" alt="">
-                                 </button>
-                                 <button class="nav-link" id="nav-4-tab" data-bs-toggle="tab" data-bs-target="#nav-4" type="button" role="tab" aria-controls="nav-4" aria-selected="false">
-                                    <img src="{{product.image_4.url}}" alt="">
-                                 </button>
+                                 {% endfor %}
                               </div>
                            </nav>
                            <div class="tab-content m-img" id="productDetailsNavContent">
@@ -57,21 +53,13 @@
                                     <img src="{{product.image.url}}" alt="">
                                  </div>
                               </div>
-                              <div class="tab-pane fade" id="nav-2" role="tabpanel" aria-labelledby="nav-2-tab" tabindex="0">
+                              {% for image in product.images_product.all %}
+                              <div class="tab-pane fade" id="nav-{{ forloop.counter|add:1 }}" role="tabpanel" aria-labelledby="nav-{{ forloop.counter|add:1 }}-tab" tabindex="0">
                                  <div class="tp-product-details-nav-main-thumb">
-                                    <img src="{{product.image_2.url}}" alt="">
+                                    <img src="{{image.image_2.url}}" alt="">
                                  </div>
                               </div>
-                              <div class="tab-pane fade" id="nav-3" role="tabpanel" aria-labelledby="nav-3-tab" tabindex="0">
-                                 <div class="tp-product-details-nav-main-thumb">
-                                    <img src="{{product.image_3.url}}" alt="">
-                                 </div>
-                              </div>
-                              <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-4-tab" tabindex="0">
-                                 <div class="tp-product-details-nav-main-thumb">
-                                    <img src="{{product.image_4.url}}" alt="">
-                                 </div>
-                              </div>
+                              {% endfor %}
                             </div>
                         </div>
                      </div> <!-- col end -->

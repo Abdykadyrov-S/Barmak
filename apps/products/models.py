@@ -86,24 +86,6 @@ class Product(models.Model):
         verbose_name="Фотография продукта",
         default='no_image.jpg'
     )
-    image_2 = models.ImageField(
-        max_length=1000,
-        upload_to='product/',
-        verbose_name="Фотография продукта №2 (Другая расцветка или другой ракурс)",
-        default='no_image.jpg'
-    )
-    image_3 = models.ImageField(
-        max_length=1000,
-        upload_to='product/',
-        verbose_name="Фотография продукта №3 (Другая расцветка или другой ракурс)",
-        default='no_image.jpg'
-    )
-    image_4 = models.ImageField(
-        max_length=1000,
-        upload_to='product/',
-        verbose_name="Фотография продукта №4 (Другая расцветка или другой ракурс)",
-        default='no_image.jpg'
-    )
     created = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Дата создания"
@@ -156,6 +138,24 @@ class Characteristic(models.Model):
         verbose_name = "Характеристика"
         verbose_name_plural = "Характеристики"
 
+class ImagesProduct(models.Model):
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE,
+        related_name="images_product",
+        verbose_name="Товар"
+    )
+    image_2 = models.ImageField(
+        max_length=1000,
+        upload_to='product/',
+        verbose_name="Фотография продукта",
+        default='no_image.jpg'
+    )
+    def __str__(self):
+        return f"Фотографии продукта {self.product}"
+
+    class Meta:
+        verbose_name = "Фотография продукта"
+        verbose_name_plural = "Фотографии продуктов"
 
 class ReviewProduct(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
