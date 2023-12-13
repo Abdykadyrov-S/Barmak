@@ -159,3 +159,4 @@ def compare_products(request):
 
     except json.JSONDecodeError:
         return JsonResponse({'status': 'error', 'message': 'Неверный формат данных'}, status=400)
+# test
