@@ -34,19 +34,7 @@
                <div class="container">
                   <div class="row">
                      <div class="col-xl-7 col-lg-6">
-                        <div class="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
-                           <nav>
-                              <div class="nav nav-tabs flex-sm-column " id="productDetailsNavThumb" role="tablist">
-                                 <button class="nav-link active" id="nav-1-tab" data-bs-toggle="tab" data-bs-target="#nav-1" type="button" role="tab" aria-controls="nav-1" aria-selected="true">
-                                    <img src="{{product.image.url}}" alt="">
-                                 </button>
-                                 {% for image in product.images_product.all %}
-                                 <button class="nav-link" id="nav-{{ forloop.counter|add:1 }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ forloop.counter|add:1 }}" type="button" role="tab" aria-controls="nav-{{ forloop.counter|add:1 }}" aria-selected="false">
-                                    <img src="{{image.image_2.url}}" alt="">
-                                 </button>
-                                 {% endfor %}
-                              </div>
-                           </nav>
+                        <div class="tp-product-details-thumb-wrapper tp-product-details-thumb-style2 tp-tab">
                            <div class="tab-content m-img" id="productDetailsNavContent">
                               <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav-1-tab" tabindex="0">
                                  <div class="tp-product-details-nav-main-thumb">
@@ -61,6 +49,18 @@
                               </div>
                               {% endfor %}
                             </div>
+                            <nav>
+                              <div class="nav nav-tabs " id="productDetailsNavThumb" role="tablist">
+                                 <button class="nav-link active" id="nav-1-tab" data-bs-toggle="tab" data-bs-target="#nav-1" type="button" role="tab" aria-controls="nav-1" aria-selected="true">
+                                    <img src="{{product.image.url}}" alt="">
+                                 </button>
+                                 {% for image in product.images_product.all %}
+                                 <button class="nav-link" id="nav-{{ forloop.counter|add:1 }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ forloop.counter|add:1 }}" type="button" role="tab" aria-controls="nav-{{ forloop.counter|add:1 }}" aria-selected="false">
+                                    <img src="{{image.image_2.url}}" alt="">
+                                 </button>
+                                 {% endfor %}
+                              </div>
+                           </nav>
                         </div>
                      </div> <!-- col end -->
                      <div class="col-xl-5 col-lg-6">

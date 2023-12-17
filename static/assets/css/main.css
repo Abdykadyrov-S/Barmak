@@ -237,6 +237,7 @@
 .tp-link-btn-2::before,
 .tp-link-btn-line::after,
 .tp-link-btn-line-2::after {
+  object-fit: contain;
   -webkit-transition: all 0.3s 0s ease-out;
   -moz-transition: all 0.3s 0s ease-out;
   -ms-transition: all 0.3s 0s ease-out;
@@ -17592,6 +17593,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .tp-category-main-thumb {
+  background-size: contain;
   position: absolute;
   top: 0;
   left: 0;

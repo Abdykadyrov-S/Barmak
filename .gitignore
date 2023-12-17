@@ -17,6 +17,8 @@ local_settings.py
 *.py[cod]
 *$py.class
 
+*.sqlite3
+
 # C extensions
 *.so
 
