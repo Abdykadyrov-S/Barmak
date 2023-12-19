@@ -58,6 +58,37 @@ class Settings(models.Model):
         verbose_name = "Настройки сайта"
         verbose_name_plural = "Настройки сайта "
 
+class Slide(models.Model):
+    title = models.CharField(
+        max_length=300,
+        verbose_name="Заголовок"
+    )
+    back_image = ResizedImageField(
+        force_format = "WEBP",
+        quality = "100",
+        upload_to = "bacground_image",
+        verbose_name="Фотография для баннера",
+        blank = True,null = True    
+    )
+    image = ResizedImageField(
+        force_format = "WEBP",
+        quality = "100",
+        upload_to = "bacground_image",
+        verbose_name="Фотография",
+        blank = True,null = True
+    )
+    link = models.URLField(
+        max_length=255,
+        verbose_name='Ссылка',
+        blank=True, null=True
+    )
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Слайдер"
+        verbose_name_plural = "Слайдеры"
 
 class About(models.Model):
     title = models.CharField(

@@ -10,6 +10,7 @@ from apps.telegram_bot.views import get_text
 def index(request):
     title_page = "Главная страница"
     settings = Settings.objects.latest('id')
+    slide = Slide.objects.all().order_by('?')
     about = About.objects.latest('id')
     categories = Category.objects.all().order_by('?')[:5]
     footer_categories = Category.objects.all().order_by('?')

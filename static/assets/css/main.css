@@ -2841,6 +2841,17 @@ div.demo img {
 /*----------------------------------------*/
 /*  2.6 Background
 /*----------------------------------------*/
+.image-bg {
+  position: absolute;
+  left: 13%;
+  transform: scale(1.8);
+  transform-origin: center;
+  /* height: 160%; */
+  object-fit: contain;
+  background-size: cover;
+  /* object-fit: cover; */
+}
+
 .grey-bg {
   background-color: var(--tp-grey-1);
 }
