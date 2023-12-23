@@ -13,7 +13,7 @@ def index(request):
     slide = Slide.objects.all().order_by('?')
     about = About.objects.latest('id')
     categories = Category.objects.all().order_by('?')[:5]
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     products = Product.objects.all().order_by('?')
     popular_products = Product.objects.all().order_by('?')[:8]
     featured_products = Product.objects.all().order_by('?')[:4]
@@ -26,7 +26,7 @@ def about(request):
     settings = Settings.objects.latest('id')
     about = About.objects.latest('id')
     best_products = Product.objects.all().order_by('?')
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     data = Data.objects.latest('id')
     return render(request, "base/about.html",locals())
 
@@ -34,7 +34,7 @@ def contact(request):
     title_page = "Контакты"
     settings = Settings.objects.latest('id')
     about = About.objects.latest('id')
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     if request.method =="POST":
         name = request.POST.get('name')
         phone = request.POST.get('phone')

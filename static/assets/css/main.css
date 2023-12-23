@@ -17114,8 +17114,8 @@ only screen and (min-width: 576px) and (max-width: 767px),
   width: 180px;
   height: 180px;
   background-color: var(--tp-grey-1);
-  background-image: radial-gradient(95.56% 95.56% at 50% 50%, #FFFFFF 0%, #BDDEFF 100%);
-  border-radius: 50%;
+  background-image: radial-gradient(95.56% 95.56% at 50% 50%, #FFFFFF 0%, #ffffff 100%);
+  border-radius: 20%;
   text-align: center;
   display: flex;
   align-items: center;

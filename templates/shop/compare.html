@@ -81,7 +81,7 @@
                                     {% for product in products_to_compare %}
                                     <td class="td-{{ product.id }}">
                                         <div class="tp-compare-add-to-cart">
-                                            <a href="https://wa.me/+996771244745/?text=Здравствуйте! Я хочу купить {{product.title}}. Можем ли мы обсудить детали?"><button class="tp-btn">Купить сейчас</button></a>
+                                            <a href="https://wa.me/{{settings.phone}}/?text=Здравствуйте! Я хочу купить {{product.title}}. Можем ли мы обсудить детали?"><button class="tp-btn">Купить сейчас</button></a>
                                         </div>
                                     </td>
                                     {% endfor %}

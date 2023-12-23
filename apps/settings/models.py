@@ -114,24 +114,40 @@ class About(models.Model):
         verbose_name_plural = "О нас"
 
 class Data(models.Model):
+    clients_title = models.CharField(
+        max_length=155,
+        verbose_name="Заголовок",
+    )
     clients = models.CharField(
         max_length=155,
-        verbose_name="Счастливые клиенты",
+        verbose_name="Введите значение",
         default="0"
+    )
+    employees_title = models.CharField(
+        max_length=155,
+        verbose_name="Введите значение",
     )
     employees = models.CharField(
         max_length=155,
-        verbose_name="кол-во сотрудников",
+        verbose_name="Заголовок",
         default="0"
+    )
+    orders_title = models.CharField(
+        max_length=155,
+        verbose_name="Заголовок",
     )
     orders = models.CharField(
         max_length=155,
-        verbose_name="кол-во заказов в месяц",
+        verbose_name="Введите значение",
         default="0"
+    )
+    products_title = models.CharField(
+        max_length=155,
+        verbose_name="Заголовок",
     )
     products = models.CharField(
         max_length=155,
-        verbose_name="кол-во продуктов",
+        verbose_name="Введите значение",
         default="0"
     )
 

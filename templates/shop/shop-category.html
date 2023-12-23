@@ -28,7 +28,7 @@
                            <h3 class="tp-category-main-title">
                               <a href="{% url 'sub_category' %}?parent_slug={{ category.slug }}">{{category.title}}</a>
                            </h3>
-                           <span class="tp-category-main-item">{{category.category_products.all.count}} продуктов</span>
+                           <span class="tp-category-main-item">{{category.subcategories.all.count}} категорий</span>
                         </div>
                      </div>
                   </div>

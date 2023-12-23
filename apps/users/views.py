@@ -7,13 +7,19 @@ from apps.settings.models import Settings
 from apps.users.models import User
 from apps.products.models import Category
 from django.contrib.auth.decorators import login_required
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+from allauth.socialaccount.providers.oauth2.views import OAuth2LoginView, OAuth2CallbackView
+from allauth.socialaccount.models import SocialAccount
+from allauth.account.utils import perform_login
+import uuid
 
 
 
 # Create your views here.
 def register(request):
     settings = Settings.objects.latest('id')
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -41,7 +47,7 @@ def register(request):
     return render(request, 'users/register.html', context)
 
 def user_login(request):
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     settings = Settings.objects.latest('id')
     if request.method == "POST":
         username = request.POST.get('username')

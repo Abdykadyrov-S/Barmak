@@ -21,7 +21,7 @@ def category(request):
     title_page = "Категории"
     categories = Category.objects.filter(parent=None).order_by("?")
     settings = Settings.objects.latest('id')
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     return render(request, 'shop/shop-category.html', locals())
 
 def sub_category(request):
@@ -33,7 +33,7 @@ def sub_category(request):
     else:
         subcategories = Category.objects.filter(parent=None)
     settings = Settings.objects.latest('id')
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     return render(request, 'shop/sub-category.html', locals())
 
 def category_detail(request, slug):
@@ -41,7 +41,7 @@ def category_detail(request, slug):
     settings = Settings.objects.latest('id')
     category = Category.objects.get(slug=slug)
     products = Product.objects.filter(category=category)
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     return render(request, 'shop/category-details.html', locals())
 
 
@@ -52,7 +52,7 @@ def products(request):
     settings = Settings.objects.latest('id')
     all_products = Product.objects.all().order_by('?')
     about = About.objects.latest('id')
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     return render(request, 'shop/all_products.html', locals())
 
 
@@ -61,7 +61,7 @@ def product_detail(request, id):
     settings = Settings.objects.latest('id')
     product = Product.objects.get(id=id)
     about = About.objects.latest('id')
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
     reviews = ReviewProduct.objects.filter(product=product).select_related('user')
     if request.method == "POST":
         user = request.user
@@ -78,7 +78,7 @@ def product_list(request):
     title_page = "Сортировка товаров"
     settings = Settings.objects.latest('id')
     all_products = Product.objects.all()
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
 
     print(request.GET.get('min_price'))
     min_price_param = request.GET.get('min_price')
@@ -124,7 +124,7 @@ def search(request):
 def compare_products_view(request):
     title_page = "Сравнение товаров"
     settings = Settings.objects.latest('id')
-    footer_categories = Category.objects.all().order_by('?')
+    footer_categories = Category.objects.all().order_by('?')[:6]
 
     compare_list = request.session.get('compare_list', [])
     products_to_compare = Product.objects.filter(id__in=compare_list)
