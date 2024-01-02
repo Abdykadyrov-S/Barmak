@@ -308,7 +308,7 @@
                            <form action="{% url 'search' %}" class="liveFormSearch" method="post">
                               {% csrf_token %}
                               <input name="query" type="text" placeholder="Искать продукт" autocomplete="off" class="liveSearchBox" value="{{ query }}">
-                              <button type="submit">
+                              <button type="submit" name="search">
                                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path

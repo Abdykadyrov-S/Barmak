@@ -115,7 +115,7 @@ def search(request):
     query = request.GET.get('q', '')
     if query:
         results = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query) | Q(image__icontains=query)).order_by('-created')[:5]
-        print(results.values('id', 'title', 'description', 'image'))
+        # print(results.values('id', 'title', 'description', 'image'))
         data = list(results.values('id', 'title', 'description', 'image')) 
         return JsonResponse(data, safe=False)
     return JsonResponse([])
