@@ -74,9 +74,9 @@ def profile(request, username):
     settings = Settings.objects.latest('id')
 
     if request.method == "POST":
-        print("post")
+        # print("post")
         if 'update' in request.POST:
-            print("update")
+            # print("update")
             username = request.POST.get('username')
             email = request.POST.get('email')
             phone = request.POST.get('phone')
@@ -104,9 +104,9 @@ def profile(request, username):
                 print(f"Error saving user: {e}")
             return redirect('profile', user.username)
         if 'update_profile_image' in request.POST:
-            print("profil")
+            # print("profil")
             profile_image = request.FILES.get('profile_image')
-            print(profile_image)
+            # print(profile_image)
             user.profile_image = profile_image
             if profile_image:
                 user.profile_image = profile_image
