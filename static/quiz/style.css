@@ -132,6 +132,10 @@
     width: 100%;
     left: 0%;
 }
+.tp-footer-bottom{
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
 @media (max-width:500px) {
     .quiz{
         left: 0rem;
@@ -167,4 +171,3 @@
         font-size: 22px;
     }
 }
-    
