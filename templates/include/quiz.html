@@ -1,0 +1,125 @@
+{% load static %}
+<div class="quiz">
+    <div class="quiz__error">
+        <div class="reveal alert alert-danger">Выберите один из предложенных вариант!</div>
+        <button class="btn btn-primary" id="ok_btn">Ок</button>
+    </div>
+    <div id="quiz_activate" class="quiz__top">
+        <span>Пройдите опрос</span>
+    </div>
+    <div class="quiz__bottom">
+        <form action="">
+            <div id="first_q" class="quiz__block">
+                <span>Какие задачи вы планируете выполнить на новом ноутбуке?</span>
+                <fieldset class='quiz__div'>
+                    <div class="option">
+                        <input id='radio_btn radio_btn1' type="checkbox" value="Для офисных задач" />
+                        <label>Для офисных задач</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn1' type="checkbox" value="Для программирования" />
+                        <label>Для программирования</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn1' type="checkbox" value="Для игры" />
+                        <label>Для игры</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn1' type="checkbox" value="Другое" />
+                        <label>Другое</label>
+                        
+                    </div>
+                </fieldset>
+            </div>
+            <fieldset class="quiz__block">
+                <span>Как часто пользуетесь ноутбуком?</span>
+                <div class='quiz__div'>
+                    <div class="option">
+                        <input id='radio_btn radio_btn2' type="checkbox" value="Каждый день по 6-8 часов" />
+                        <label>Каждый день по 6-8 часов</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn2' type="checkbox" value="Каждый день по 8+ часов" />
+                        <label>Каждый день по 8+ часов</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn2' type="checkbox" value="Каждый день по 2-4 часов" />
+                        <label>Каждый день по 2-4 часов</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn2' type="checkbox" value="3-4 раза в неделю" />
+                        <label>3-4 раза в неделю</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="quiz__block">
+                <span>Какие проблемы возникают с вашим текущим ноутбуком?</span>
+                <div class='quiz__div d-flex w-100'>
+                    <div class='w-100'>
+                        <input id='radio_btn3' style="width: 100%; font-size:20px;" type="text" placeholder="Пример ответа = Не выдерживал игры"/>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="quiz__block">
+                <span>Сколько оперативной памяти необходимо?</span>
+                <div class='quiz__div'>
+                    <div class="option">
+                        <input id='radio_btn radio_btn4' type="checkbox" value="4 GB" />
+                        <label>4 GB</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn4' type="checkbox" value="8 GB" />
+                        <label>8 GB</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn4' type="checkbox" value="16 GB" />
+                        <label>16 GB</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn4' type="checkbox" value="Больше" />
+                        <label>Больше</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="quiz__block">
+                <span>Сколько памяти необходимо?</span>
+                <div class='quiz__div'>
+                    <div class="option">
+                        <input id='radio_btn radio_btn5' type="checkbox" value="128 GB" />
+                        <label>128 GB</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn5' type="checkbox" value="256 GB" />
+                        <label>256 GB</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn5' type="checkbox" value="512 GB" />
+                        <label>512 GB</label>
+                    </div>
+                    <div class="option">
+                        <input id='radio_btn radio_btn5' type="checkbox" value="Больше" />
+                        <label>Больше</label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="quiz__block">
+                <span>Викторина принята <br>Последний шаг! </span>
+                <div class="form">
+                    <h3>Оставьте ваши данные</h3>
+                  </div>
+                  <div class="inp-form">
+                    <input name="name" type="text" placeholder="Имя">
+                  </div>
+                  <div class="inp-form">
+                    <input name="phone" type="text" placeholder="Телефон">
+                  </div>
+                  <input name="fullinfo" id="quiz_result" type="hidden" placeholder="Телефон">
+            </fieldset>
+            <div class="quiz__buttons">
+                <button type="button" class="tp-btn-2 tp-btn-border-2" id="prev_q" onclick="showPrevious()">Предуший вопрос</button>
+                <button type="button" class="tp-btn-2 tp-btn-border-2" id="next_q" onclick="showNext()">Следуйщий вопрос</button>
+                <button type="submit" class="tp-btn-2 tp-btn-border-2" id="submit_q">Отправить данные</button>
+            </div>
+        </form>
+    </div>
+</div>
