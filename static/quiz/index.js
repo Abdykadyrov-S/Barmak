@@ -13,11 +13,13 @@ const inputResult = document.getElementById('quiz_result')
 const quiz__error = document.querySelector('.quiz__error')
 const ok_btn = document.querySelector('#ok_btn')
 
+
 function showPrevious() {
     elements[currentIndex].classList.remove('visible');
     currentIndex = (currentIndex - 1 + elements.length) % elements.length;
     elements[currentIndex].classList.add('visible');
     updateButtonVisibility();
+    quiz__error.style.display = 'none'
 }
 
 function showNext() {
@@ -26,11 +28,16 @@ function showNext() {
         currentIndex = (currentIndex + 1) % elements.length;
         elements[currentIndex].classList.add('visible');
         updateButtonVisibility();
+        quiz__error.style.display = 'none'
     }
 }
-ok_btn.addEventListener('click', ()=>{
-    quiz__error.style.display = 'none'
-})
+
+function check_inputs() {
+    const name = document.querySelector('[name="name"]')
+    const phone = document.querySelector('[name="phone"]')
+    return name.value != '' && phone.value != '' ? true : false
+}
+
 function validateInputs(id){
     let radio_btns = document.querySelectorAll(`input[id="radio_btn radio_btn${id}"]:checked`)
     if (id == 3) {
@@ -56,12 +63,14 @@ function updateButtonVisibility() {
     showPreviousButton.style.display = currentIndex === 0 ? 'none' : 'block';
     showNextButton.style.display = currentIndex === elements.length - 1 ? 'none' : 'block';
     submitButton.style.display = currentIndex === elements.length - 1 ? 'block' : 'none';
-    console.log(inputResult.value);
 }
 
 elements[currentIndex].classList.add('visible');
 updateButtonVisibility();
 
+ok_btn.addEventListener('click', ()=>{
+    quiz__error.style.display = 'none'
+})
 
 let radio_btns = document.querySelectorAll('input[type=checkbox]')
 let quiz__div = document.querySelector('.quiz__div')
@@ -70,4 +79,3 @@ radio_btns.forEach((e)=>{
         e.parentElement.lastElementChild.classList.toggle('label-active')
     })
 })
-

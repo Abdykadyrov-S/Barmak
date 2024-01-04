@@ -21,6 +21,28 @@ def index(request):
     all_products = Product.objects.all().order_by('?')
     return render(request, "base/index.html",locals())
 
+def send_data(request):
+    if request.method =="POST":
+       fullinfo =  request.POST.get('fullinfo')
+       name = request.POST.get('name')
+       phone = request.POST.get('phone')
+       quiz_3 = request.POST.get('quiz_3')
+
+       get_text(
+       f"""
+Новая заявка:
+
+Имя пользователя: {name}
+
+Номер телефона: {phone}
+
+Выбранные поля:
+
+{fullinfo}
+        """
+    )
+       return redirect("index")
+
 def about(request):
     title_page = "О нас"
     settings = Settings.objects.latest('id')

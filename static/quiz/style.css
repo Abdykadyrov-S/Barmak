@@ -1,16 +1,16 @@
 .quiz{
     position: fixed;
-    width: 400px;
+    width: 350px;
     background-color: var(--tp-theme-primary);
     border-radius: 8px 8px 0 0;
     bottom: 0;
-    left: 5rem;
+    left: 4.5rem;
     z-index: 4;
     color: var(--tp-common-white);
     cursor: pointer;
     padding: 10px;
     border: 1px solid white;
-    transform: translateY(80%);
+    transform: translateY(82%);
     transition: transform .8s;
 }
 .quiz-active{
@@ -18,7 +18,7 @@
 }
 .quiz__top{
     text-align: center;
-    font-size: 30px;
+    font-size: 26px;
     padding: 10px 0;
 }
 .quiz__bottom form{
@@ -37,7 +37,7 @@
     transition: all .8s ;
 }
 .quiz__block span{
-    font-size: 24px;
+    font-size: 22px;
     margin: 15px 0;
 }
 .quiz__div{
@@ -46,9 +46,13 @@
     gap: 5px;
     justify-content: center;
     margin-bottom: 10px;
+    width: 100%;
+}
+.quiz__bottom{
+    width: 100%;
 }
 .option{
-    font-size: 20px;
+    font-size: 18px;
     width:100%;
     display: flex;
     cursor: pointer;
@@ -134,6 +138,15 @@
         width: 300px;
         transform: translateY(80%);
     }
+    .quiz-active{
+        width: 100%;
+        z-index: 11;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     .quiz__top{
         font-size: 22px;
     }
@@ -148,9 +161,10 @@
         padding: 2px;
     }
     .quiz__error{
-        top: -70%;
+        position: static;
     }
     .form h3{
         font-size: 22px;
     }
 }
+    
