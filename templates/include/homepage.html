@@ -74,7 +74,7 @@
                      $('ul.liveSearchResults').append('<li>Результатов нет</li>');
                   } else {// Очищаем и показываем список результатов
                      data.forEach(function (item) {
-                        $('ul.liveSearchResults').append('<li><img src="/media/' + item.image + '" alt=""><a href="/product_detail/' + item.id + '">' + item.title + '</a></li>');
+                        $('ul.liveSearchResults').append(`<li><img src="/media/${item.image}" alt=""><a href="/product_detail/${item.id}">${item.title}"> </a></li>`);
                      });
                   }
                   $('ul.liveSearchResults').addClass('visible');
@@ -186,6 +186,39 @@
          if (!$(e.target).closest('input.liveSearchBox').length) {
             $('ul.liveSearchResults').hide();
          }
+      });
+      $('#submit_q').click(function () {
+         var fullinfo = $('#fullinfo').val();
+         var name = $('#name').val();
+         var phone = $('#phone').val();
+         const quiz = $('.quiz')
+         $.ajax({
+            url: "{% url 'send_data' %}",
+            type: 'POST',
+            
+            data: JSON.stringify({
+               fullinfo: fullinfo,
+               name: name,
+               phone: phone,
+            }),
+            contentType: 'application/json',
+            headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+            success: function (response) {
+                  Swal.fire(
+                     'Данные отправлены!',
+                     'Вам напишет наш менеджер',
+                     'success'
+                  );
+                  quiz.removeClass('quiz-active')
+            },
+            error: function () {
+                  Swal.fire(
+                     'Ошибка',
+                     'Ошибка при отправке данных',
+                     'error'
+                  );
+            } 
+         });
       });
 
       // Список сравнения

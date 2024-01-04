@@ -8,8 +8,7 @@
         <span>Пройдите опрос</span>
     </div>
     <div class="quiz__bottom">
-        <form action="{% url 'send_data' %}" method="POST">
-            {% csrf_token %}
+        <div class='form2'>
             <div id="first_q" class="quiz__block">
                 <span>Какие задачи вы планируете выполнить на новом ноутбуке?</span>
                 <fieldset class='quiz__div'>
@@ -110,18 +109,18 @@
                     <h3>Оставьте ваши данные</h3>
                   </div>
                   <div class="inp-form">
-                    <input name="name" type="text" placeholder="Имя" required>
+                    <input id="name" type="text" placeholder="Имя" required>
                   </div>
                   <div class="inp-form">
-                    <input name="phone" type="text" placeholder="Телефон" required>
+                    <input id="phone" type="text" placeholder="Телефон" required>
                   </div>
-                  <input name="fullinfo" id="quiz_result" type="hidden" placeholder="Телефон" required>
+                  <input id="fullinfo" type="hidden" placeholder="Телефон" required>
             </fieldset>
             <div class="quiz__buttons">
                 <button type="button" class="tp-btn-2 tp-btn-border-2" id="prev_q" onclick="showPrevious()">Предуший вопрос</button>
                 <button type="button" class="tp-btn-2 tp-btn-border-2" id="next_q" onclick="showNext()">Следуйщий вопрос</button>
                 <button type="submit" class="tp-btn-2 tp-btn-border-2" id="submit_q">Отправить данные</button>
             </div>
-        </form>
+        </div>
     </div>
 </div>

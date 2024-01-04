@@ -1,10 +1,12 @@
+import json
 from django.shortcuts import render, redirect
 
+from django.http import JsonResponse
 from .models import *
 from apps.blog.models import News
 from apps.products.models import Category, Product
 from apps.telegram_bot.views import get_text
-
+from django.views.decorators.http import require_http_methods
 
 # Create your views here.
 def index(request):
@@ -21,27 +23,27 @@ def index(request):
     all_products = Product.objects.all().order_by('?')
     return render(request, "base/index.html",locals())
 
+@require_http_methods(["POST"])
 def send_data(request):
-    if request.method =="POST":
-       fullinfo =  request.POST.get('fullinfo')
-       name = request.POST.get('name')
-       phone = request.POST.get('phone')
-       quiz_3 = request.POST.get('quiz_3')
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+        fullinfo = data.get('fullinfo')
+        name = data.get('name')
+        phone = data.get('phone')
 
-       get_text(
-       f"""
+        get_text(
+            f"""
 Новая заявка:
-
 Имя пользователя: {name}
-
 Номер телефона: {phone}
-
 Выбранные поля:
-
 {fullinfo}
-        """
-    )
-       return redirect("index")
+            """
+        )
+
+        return JsonResponse({'status': 'success', 'message': 'Ghfsfsbjk'})
+    except json.JSONDecodeError as e:
+        return JsonResponse({'status': 'error', 'message': 'Ошибка при декодировании JSON'})
 
 def about(request):
     title_page = "О нас"

@@ -9,32 +9,32 @@ let currentIndex = 0;
 let showPreviousButton = document.querySelector('#prev_q');
 let showNextButton = document.querySelector('#next_q');
 let submitButton = document.querySelector('#submit_q');
-const inputResult = document.getElementById('quiz_result')
+const inputResult = document.getElementById('fullinfo')
 const quiz__error = document.querySelector('.quiz__error')
 const ok_btn = document.querySelector('#ok_btn')
 
 
 function showPrevious() {
-    elements[currentIndex].classList.remove('visible');
+    elements[currentIndex].classList.remove('visible2');
     currentIndex = (currentIndex - 1 + elements.length) % elements.length;
-    elements[currentIndex].classList.add('visible');
+    elements[currentIndex].classList.add('visible2');
     updateButtonVisibility();
     quiz__error.style.display = 'none'
 }
 
 function showNext() {
     if (validateInputs(currentIndex+1)) {
-        elements[currentIndex].classList.remove('visible');
+        elements[currentIndex].classList.remove('visible2');
         currentIndex = (currentIndex + 1) % elements.length;
-        elements[currentIndex].classList.add('visible');
+        elements[currentIndex].classList.add('visible2');
         updateButtonVisibility();
         quiz__error.style.display = 'none'
     }
 }
 
 function check_inputs() {
-    const name = document.querySelector('[name="name"]')
-    const phone = document.querySelector('[name="phone"]')
+    const name = document.querySelector('[id="name"]')
+    const phone = document.querySelector('[id="phone"]')
     return name.value != '' && phone.value != '' ? true : false
 }
 
@@ -65,7 +65,7 @@ function updateButtonVisibility() {
     submitButton.style.display = currentIndex === elements.length - 1 ? 'block' : 'none';
 }
 
-elements[currentIndex].classList.add('visible');
+elements[currentIndex].classList.add('visible2');
 updateButtonVisibility();
 
 ok_btn.addEventListener('click', ()=>{

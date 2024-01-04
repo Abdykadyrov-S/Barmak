@@ -21,7 +21,7 @@
     font-size: 26px;
     padding: 10px 0;
 }
-.quiz__bottom form{
+.quiz__bottom .form2{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,7 +101,7 @@
     background-color: white;
     color: #0d6efd;
 }
-.visible{
+.visible2{
     display: flex !important;
 }
 .tp-product-details-nav-main-thumb img{
