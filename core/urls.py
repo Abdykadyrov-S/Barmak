@@ -16,10 +16,12 @@ Including another URLconf
 """
 
 from django.conf.urls.static import static
+from django.conf.urls import handler404
 from django.conf import settings
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, re_path, include
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,11 @@ urlpatterns = [
     path('', include("apps.users.urls")),
     path('accounts/', include('allauth.urls')),
     # path('', include("apps.carts.urls")),
+    re_path('robots.txt', TemplateView.as_view(template_name = "robots.txt", content_type = "text/pali")),
 ]
+
+
+
+handler404 = 'apps.settings.views.errors'
 
 urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

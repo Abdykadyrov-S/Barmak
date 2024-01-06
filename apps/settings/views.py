@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.http import JsonResponse
 from .models import *
@@ -78,3 +78,7 @@ def contact(request):
         return redirect('index')
 
     return render(request, "base/contact.html", locals())
+
+
+def errors(request, exception):
+    return render(request, "404/404.html", status=404)
