@@ -183,3 +183,26 @@ class Contact(models.Model):
     class Meta:
         verbose_name = "Оставленный отзыв"
         verbose_name_plural = "Оставленные отзывы"
+
+class ChooseLaptop(models.Model):
+    name = models.CharField(
+        max_length=155,
+        verbose_name="Имя пользователя",
+        null=True,blank=True
+    )
+    phone = models.CharField(
+        max_length=155,
+        verbose_name="Номер телефона",
+        null=True,blank=True
+    )
+    fullinfo = models.TextField(
+        verbose_name="Выбранные поля",
+        null=True,blank=True
+    )
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = "Заявка на подбор ноутбука"
+        verbose_name_plural = "Заявки на подбор ноутбука"

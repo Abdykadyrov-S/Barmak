@@ -30,6 +30,7 @@ def send_data(request):
         fullinfo = data.get('fullinfo')
         name = data.get('name')
         phone = data.get('phone')
+        ChooseLaptop.objects.create(name=name, phone=phone, fullinfo=fullinfo)
 
         get_text(
             f"""
