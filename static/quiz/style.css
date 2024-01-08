@@ -136,11 +136,26 @@
     margin-bottom: 20px;
     word-wrap: break-word;
 }
+.quiz_activate{
+    width: 100%;
+    justify-content: end;
+    align-items: end;
+    display: none;
+    position: absolute;
+    top: 100px;
+    right: 20px;
+}
+.quiz_activate span{
+    font-size: 26px;
+}
 @media (max-width:500px) {
     .quiz{
         left: 0rem;
-        width: 300px;
+        width: 100%;
         transform: translateY(80%);
+    }
+    .quiz_activate12{
+        display: flex;
     }
     .quiz-active{
         width: 100%;

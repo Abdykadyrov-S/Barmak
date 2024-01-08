@@ -1,7 +1,9 @@
 let quiz = document.getElementById('quiz_activate')
+let quiz_deactivate = document.getElementById('quiz_deactivate')
 let quiz_block = document.querySelector('.quiz')
 quiz.addEventListener('click', ()=>{
     quiz_block.classList.toggle('quiz-active')
+    quiz_deactivate.classList.toggle('quiz_activate12')
 })
 
 let elements = document.querySelectorAll('.quiz__block');
@@ -13,6 +15,11 @@ const inputResult = document.getElementById('fullinfo')
 const quiz__error = document.querySelector('.quiz__error')
 const ok_btn = document.querySelector('#ok_btn')
 
+quiz_deactivate.addEventListener('click', ()=>{
+    quiz_block.classList.remove('quiz-active')
+    quiz_deactivate.classList.remove('quiz_activate12')
+
+})
 
 function showPrevious() {
     elements[currentIndex].classList.remove('visible2');
