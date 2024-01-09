@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from apps.telegram.views import bot
+from apps.telegram_bot.views import bot
 
 class Command(BaseCommand):
     help = 'Bot' 
