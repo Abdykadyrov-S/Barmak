@@ -90,7 +90,12 @@
                               {% if product.old_price %}
                               <span class="tp-product-details-price old-price">{{product.old_price}}</span>
                               {% endif %}
-                              <span class="tp-product-details-price new-price">{{product.price}} сом</span>
+                              <span class="tp-product-details-price new-price">{{product.price}} сом</span><br>
+                              {% if product.accessible %}
+                              <h6>Товар в наличии✅</h6>
+                              {% else %}
+                              <h6>Товар не в наличии❌</h6>
+                              {% endif %}
                            </div>
    
                            
