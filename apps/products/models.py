@@ -51,6 +51,10 @@ class Product(models.Model):
         verbose_name="Короткое описание",
         blank=True, null=True
     )
+    accessible = models.BooleanField(
+        default=False, 
+        verbose_name="Товар в наличии?"
+    )
     popular = models.BooleanField(
         default=False, 
         verbose_name="Товар популярный (трендовый)?"
